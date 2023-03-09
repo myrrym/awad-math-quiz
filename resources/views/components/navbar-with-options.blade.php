@@ -5,12 +5,9 @@
             <a class="nav-link" href="#">leaderboard</a>
         </div>
         <a class="navbar-brand" href="#">MATH ᓚᘏᗢ CAT</a>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="#">account</a>
-                <a class="nav-link" href="#">log out</a>
-            </div>
+        <div class="navbar-nav">
+            <a class="nav-link" href="#">account</a>
+            <a class="nav-link" href="#">log out</a>
         </div>
     </div>
 </nav>

@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <x-navbar-without-options/>
-</body>
-</html>
+@extends("template")
+
+@section("head")
+    <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
+@endsection
+
+@section("content")
+    <div class="block-question">
+
+        <div class="row">
+            <div class="col-2">
+                <div class="block-question-score">101s</div>
+            </div>
+            <div class="col-8">
+                <div class="block-question-question">1 + 1 + 1 + 1 + 1 + 1 + 1 = ?</div>
+            </div>
+            <div class="col-2">
+                <div class="block-question-correct">5<br>answers</div>
+            </div>
+        </div>
+
+    </div>
+@endsection
+
+@section("script")
+    <!-- This is where your js/other scripts code goes -->
+@endsection

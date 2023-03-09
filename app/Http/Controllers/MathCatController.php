@@ -8,14 +8,20 @@ class MathCatController extends Controller
 {
     public function viewExample(){
         $navbar = "with-options";
-        return view('example', compact('navbar'));
-        // return view('example')->with($navbar);
+        $footer = "true";
+        return view('example', compact(
+            'navbar',
+            'footer'
+        ));
     }
 
     public function viewQuiz(){
         $navbar = "without-options";
-        return view('quiz', compact('navbar'));
-        // return view('example')->with($navbar);
+        $footer = "true";
+        return view('quiz', compact(
+            'navbar',
+            'footer'
+        ));
     }
     
 }
