@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 class MathCatController extends Controller
 {
     public function viewExample(){
-        return view('example');
+        $navbar = "with-options";
+        return view('example', compact('navbar'));
+        // return view('example')->with($navbar);
     }
 
     public function viewQuiz(){
-        return view('quiz');
+        $navbar = "without-options";
+        return view('quiz', compact('navbar'));
+        // return view('example')->with($navbar);
     }
     
 }
