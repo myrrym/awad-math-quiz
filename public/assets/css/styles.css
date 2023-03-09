@@ -13,9 +13,58 @@
 *{
     font-family: 'Inter-Regular';
 }
+body{
+    min-height: 100vh;
+}
+.a{
+    text-decoration: unset;
+}
+
+/* navbar */
+.parent-navbar-brand{
+}
+.navbar-brand{
+    text-align: center;
+}
+.nav-link-ext{
+    text-decoration: underline !important;
+}
 .logo-math-cat{
 
 }
 
+/* footer */
+.footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #FEAE36;
+    text-align: right;
+    padding: 1rem;
+}
+
 /* quiz */
 
+.block-answer-btn{
+    text-align: center;
+    font-family: 'Inter-Bold';
+    font-size: 30pt;
+    padding: 2rem;
+    color: #FFFFFF;
+}
+.block-answer-btn-1{
+    background-color: #F92A4D;
+}
+.block-answer-btn-2{
+    background-color: #247FEA;
+}
+.block-answer-btn-3{
+    background-color: #FFC035;
+}
+.block-answer-btn-4{
+    background-color: #25B216;
+}
+.block-answer-btn-img{
+    height: 80%;
+    width: auto;
+}
