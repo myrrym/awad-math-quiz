@@ -3,10 +3,17 @@
     font-family: Inter-Regular;
     src: url(/assets/fonts/Inter-Regular.ttf);
 }
-
 @font-face {
     font-family: Inter-Bold;
     src: url(/assets/fonts/Inter-Bold.ttf);
+}
+@font-face {
+    font-family: AdventPro-Bold;
+    src: url(/assets/fonts/AdventPro-Bold.ttf);
+}
+@font-face {
+    font-family: Amiko-Regular;
+    src: url(/assets/fonts/Amiko-Regular.ttf);
 }
 
 /* general */
@@ -15,9 +22,13 @@
 }
 body{
     min-height: 100vh;
+    width: 100vw;
 }
 .a{
     text-decoration: unset;
+}
+.block-content{
+    height: 100%;
 }
 
 /* navbar */
@@ -44,13 +55,60 @@ body{
 }
 
 /* quiz */
-
-.block-answer-btn{
+.block-question{
     text-align: center;
+    font-size: 30pt;
+    position: relative;
+}
+.block-question-score-parent{
+    display: flex;
+}
+.block-question-score{
+    font-family: 'Amiko-Regular';
+    background-color: #7E51B9;
+    border-radius: 50px;
+    width: 6rem;
+    height: 6rem;
+    color: #FFFFFF;
+    margin: auto auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+.block-question-question{
+    font-family: 'AdventPro-Bold';
+    margin: auto auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    min-height: 6rem;
+}
+.block-question-correct{
+    font-family: 'Amiko-Regular';
+    margin: auto auto;
+    line-height: 0.9;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    min-height: 6rem;
+}
+.block-question-correct-small{
+    font-size: 18pt;
+}
+.block-answer{
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+}
+.block-answer-btn{
     font-family: 'Inter-Bold';
     font-size: 30pt;
     padding: 2rem;
     color: #FFFFFF;
+    display: flex;
 }
 .block-answer-btn-1{
     background-color: #F92A4D;
@@ -65,6 +123,7 @@ body{
     background-color: #25B216;
 }
 .block-answer-btn-img{
-    height: 80%;
-    width: auto;
+    height: 3.5rem;
+    width: 3.5rem;
+    margin-right: 1.5rem;
 }
