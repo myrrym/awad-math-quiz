@@ -15,6 +15,7 @@
 }
 body{
     min-height: 100vh;
+    background-image: url(/assets/img/cat-background.png);
 }
 .a{
     text-decoration: unset;
@@ -26,11 +27,24 @@ body{
 .navbar-brand{
     text-align: center;
 }
+.navbar-brand:hover{
+    opacity: 0.6;
+}
+
+.nav-link-ext:not(.navbar-brand):hover{
+    background-color: #FEAE36;
+
+}
+
 .nav-link-ext{
     text-decoration: underline !important;
 }
-.logo-math-cat{
 
+/* .container-fluid{
+    color: white;
+} */
+
+.logo-math-cat:hover{
 }
 
 /* footer */
@@ -40,7 +54,7 @@ body{
     bottom: 0;
     background-color: #FEAE36;
     text-align: right;
-    padding: 1rem;
+    padding: 3px 16px;
 }
 
 /* quiz */
@@ -68,3 +82,12 @@ body{
     height: 80%;
     width: auto;
 }
+
+.cat-paw{
+    width: 100px;
+    height: 102px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+

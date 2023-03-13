@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class MathCatController extends Controller
 {
+    public function viewHomePage(){
+        $navbar = "with-options";
+        $footer = "true";
+        return view('homepage' , compact(
+            'navbar',
+            'footer'
+        ));
+    }
+    
     public function viewExample(){
         $navbar = "with-options";
         $footer = "true";
