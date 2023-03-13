@@ -30,7 +30,7 @@
         
         <div class="row">
             <div class="col-12">
-                <div class="content">
+                <div class="block-content">
                     @yield("content")
                 </div>
                 <!-- cdn - bootstrap js -->

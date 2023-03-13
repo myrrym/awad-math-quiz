@@ -9,13 +9,15 @@
 
         <div class="row">
             <div class="col-2">
-                <div class="block-question-score">101s</div>
+                <div class="block-question-score-parent">
+                    <div class="block-question-score">101</div>
+                </div>
             </div>
             <div class="col-8">
                 <div class="block-question-question">1 + 1 + 1 + 1 + 1 + 1 + 1 = ?</div>
             </div>
             <div class="col-2">
-                <div class="block-question-correct">5<br>answers</div>
+                <div class="block-question-correct">5<br><span class="block-question-correct-small">answers</span></div>
             </div>
         </div>
 
