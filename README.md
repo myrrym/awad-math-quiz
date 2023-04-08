@@ -64,3 +64,36 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Setup
+
+Make sure the following packages or equivalent are installed:
+
+    php8.1
+    php8.1-curl
+    php8.1-mysql
+    php8.1-xml
+    composer
+    docker
+    docker-compose
+
+For WSL system, install Docker Desktop and make sure WSL2 integeration has been enabled.
+
+It is recommended that you add sail to your shell shortcut, shown here.
+
+For initial cloning, do the following:
+
+    composer install
+    cp .env.example .env (do not use in active deployment)
+    php artisan key:generate
+    php artisan migrate
+
+If sail artisan fails, you may need to first run sail up -d once.
+
+To setup the corresponding react environment, do the following:
+
+    sail bash
+    npm ci
+    npm run dev
+
+Running the app
