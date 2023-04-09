@@ -32,5 +32,14 @@ class MathCatController extends Controller
             'footer'
         ));
     }
+
+    public function viewLogin(){
+        $navbar = "with-options";
+        $footer = "true";
+        return view('login', compact(
+            'navbar',
+            'footer'
+        ));
+    }
     
 }
