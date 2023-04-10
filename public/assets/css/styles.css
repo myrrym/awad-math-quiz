@@ -162,14 +162,14 @@ body{
 .difficulty{
     display: flex;
     flex-direction: row;
-    margin-top: 70px;
+    margin-top: 90px;
 }
 
 .easy{
     background-color: white;
     border-radius: 15px;
-    padding: 20px;
-    margin: 15px;
+    padding: 40px;
+    margin: 20px;
     text-align: center;
     text-decoration: none;
     color: gray;
@@ -188,8 +188,8 @@ body{
 .medium{
     background-color: white;
     border-radius: 15px;
-    padding: 20px;
-    margin: 15px;
+    padding: 40px;
+    margin: 20px;
     text-align: center;
     text-decoration: none;
     color: gray;
@@ -208,8 +208,8 @@ body{
 .hard{
     background-color: white;
     border-radius: 15px;
-    padding: 20px;
-    margin: 15px;
+    padding: 40px;
+    margin: 20px;
     text-align: center;
     text-decoration: none;
     color: gray;
@@ -228,8 +228,8 @@ body{
 .whatTheMeow{
     background-color: white;
     border-radius: 15px;
-    padding: 20px;
-    margin: 15px;
+    padding: 40px;
+    margin: 20px;
     text-align: center;
     text-decoration: none;
     color: gray;
@@ -246,11 +246,21 @@ body{
 }
 
 .cat-paw{
-    width: 110px;
-    height: 135px;
+    width: 130px;
+    height: 160px;
     position: absolute;
-    margin-top: 16em;
+    margin-top: 19em;
     left: 290px;
+}
+
+.pageLoader{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    z-index: 99999;
+    position: fixed;
+    padding: 200px 600px 200px 580px;
+    /* display: none; */
 }
 
 

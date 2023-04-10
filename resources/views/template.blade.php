@@ -19,7 +19,7 @@
     @yield("head")
 </head>
 <body>
-
+    <img class="pageLoader" src="/assets/img/meow-loader.gif" alt="">
     @if ($navbar == 'without-options')
         <x-navbar-without-options/>
     @else
@@ -52,4 +52,14 @@
 
     @yield("script")
 </body>
+<script>
+    $(window).ready(function(){
+        // $(function(){
+            setTimeout(() => {
+                $(".pageLoader").fadeOut(150)
+            }, 1000);
+        // })
+        // $('.pageLoader').fadeOut(500);
+    });
+</script>
 </html>
