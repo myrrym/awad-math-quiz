@@ -6,32 +6,32 @@
 @endsection
 
 @section('content')
-        <div class="container">
-            {{-- LEFT SECTION BECOME COMPONENT --}}
-            <div class="left-section">
-                <div class="top-section left-frame"></div>
-                <div class="mid-section left-frame">
-                    <a href="/user">Profile &nbsp;</a>
-                    <a href="/history">History &nbsp;</a>
-                    <a href="/achievement">Achievement &nbsp;</a>
-                </div>
-                <div class="bottom-section left-frame"></div>
+    <div class="container">
+        {{-- LEFT SECTION BECOME COMPONENT --}}
+        <div class="left-section">
+            <div class="top-section left-frame"></div>
+            <div class="mid-section left-frame">
+                <a href="/user">Profile &nbsp;</a>
+                <a href="/history">History &nbsp;</a>
+                <a href="/achievement">Achievement &nbsp;</a>
             </div>
-            <div class="middle-section"></div>
-            <div class="right-section">
-                <div class="main-frame">
-                    <div><img class="profile-picture" src="/assets/img/profile_picture.jpg" alt=""></div>
-                    <div class="picture"><a href="#">change profile picture</a></div>
-                    <div class="label">username</div>
-                    <div class="result">sir_meow</div>
-                    <div class="label">email</div>
-                    <div class="result">sir_meow@catmail.com</div>
-                    <div class="label">joined since</div>
-                    <div class="result">5th March 2023</div>
-                    <div class="password"><a href="#">change password</a></div>
-                </div>
+            <div class="bottom-section left-frame"></div>
+        </div>
+        <div class="middle-section"></div>
+        <div class="right-section">
+            <div class="main-frame">
+                <div><img class="profile-picture" src="/assets/img/profile_picture.jpg" alt=""></div>
+                <div class="picture"><a href="#">change profile picture</a></div>
+                <div class="label">username</div>
+                <div class="result">sir_meow</div>
+                <div class="label">email</div>
+                <div class="result">sir_meow@catmail.com</div>
+                <div class="label">joined since</div>
+                <div class="result">5th March 2023</div>
+                <div class="password"><a href="" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">change password</a></div>                
             </div>
         </div>
+    </div>
 @endsection
 
 @section('script')
@@ -42,12 +42,11 @@
         }
 
         .container {
-            height: 578px;
+            height: 100%;
             border: 1px solid black;
             display: flex;
             flex-wrap: wrap;
             align-items: stretch;
-            overflow: hidden;
         }
 
         .left-section {
@@ -58,7 +57,7 @@
             display: flex;
             margin-top: 1%;
             margin-left: 1%;
-            height: 95%;
+            height: 77vh;
             flex-direction: column;
             overflow: hidden;
         }
@@ -121,22 +120,23 @@
 
         .main-frame {
             background-color: white;
-            height: 99%;
+            height:77vh;
             width: 100%;
             margin-top: 0px;
             padding: 30px;
             box-sizing: border-box;
             border-radius: 20px;
-            text-align:center;
+            text-align: center;
+            overflow: scroll;
         }
 
         .label {
             color: #B6B6B6;
             margin-top: 30px;
         }
-        
+
         .result {
-            font-size:160%;
+            font-size: 160%;
         }
 
         .profile-picture {
@@ -146,16 +146,16 @@
             border-radius: 50%;
         }
 
-        .picture a{
+        .picture a {
             color: #B6B6B6;
-            font-size:70%;
+            font-size: 70%;
         }
-        
+
         .password {
             margin-top: 30px;
         }
 
-        .password a{
+        .password a {
             color: #AC5858;
         }
     </style>

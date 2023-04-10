@@ -18,7 +18,7 @@
     
     @yield("head")
 </head>
-<body>
+<body >
     <img class="pageLoader" src="/assets/img/meow-loader.gif" alt="">
     @if ($navbar == 'without-options')
         <x-navbar-without-options/>

@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('username');
             $table->string('difficulty');
+            $table->int('score');
+            $table->string('time');
             $table->timestamps();
         });
     }
