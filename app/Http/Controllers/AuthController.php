@@ -33,6 +33,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request);
         $request->validate([
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
@@ -50,7 +51,7 @@ class AuthController extends Controller
         $token = $user->createToken('access-token')->plainTextToken;
 
         // Return the token in the response
-        return response()->json(['token' => $token], 201);
+        return redirect("/home");
     }
 
     public function changePassword(Request $request)
