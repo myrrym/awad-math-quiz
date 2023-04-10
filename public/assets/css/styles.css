@@ -256,10 +256,10 @@ body{
 .pageLoader{
     height: 100%;
     width: 100%;
-    background-color: white;
+    background-color: #FFC035;
     z-index: 99999;
     position: fixed;
-    padding: 200px 600px 200px 580px;
+    padding: 200px 600px 200px 600px;
     /* display: none; */
 }
 
