@@ -8,7 +8,6 @@
         <a class="navbar-brand" href="#">MATH<img class="logo-math-cat" src="/assets/img/logo-math-cat.png"
                 alt="">CAT</a>
         <div class="navbar-nav">
-<<<<<<< Updated upstream
             <!-- signup trigger modal -->
             <div>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
@@ -21,10 +20,6 @@
                     Login
                 </button>
             </div>
-=======
-            <a class="nav-link" href="#">sign up</a>
-            <a class="nav-link" href="#">login</a>
->>>>>>> Stashed changes
         </div>
     </div>
 </nav>
