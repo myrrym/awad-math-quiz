@@ -8,7 +8,7 @@
                 </div>
                 <div class="modal-body">
 
-                    {{-- form for the login --}}
+                    {{-- form for the register --}}
                     <form action="/api/register" method="POST">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -17,7 +17,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" name="username" id="username" >
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>

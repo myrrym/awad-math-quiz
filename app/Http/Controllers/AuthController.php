@@ -11,24 +11,27 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request);
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required|string|max:255',
             'password' => 'required',
         ]);
 
         // Retrieve the user by email
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('username', $request->username)->first();
 
         // Check if the user exists and the password is correct
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['error' => 'Invalid email or password'], 401);
+            return response()->json(['error' => 'Invalid username or password'], 401);
         }
 
         // Generate an API token for the authenticated user
         $token = $user->createToken('access-token')->plainTextToken;
 
         // Return the token in the response
-        return response()->json(['token' => $token], 200);
+        // return response()->json(['message' => 'User successfully registered'], 201);
+        return redirect("/home");
+
     }
 
     public function register(Request $request)
@@ -51,7 +54,9 @@ class AuthController extends Controller
         $token = $user->createToken('access-token')->plainTextToken;
 
         // Return the token in the response
+        // return response()->json(['message' => 'User successfully registered'], 201);
         return redirect("/home");
+
     }
 
     public function changePassword(Request $request)
