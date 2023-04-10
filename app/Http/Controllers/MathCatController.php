@@ -32,5 +32,50 @@ class MathCatController extends Controller
             'footer'
         ));
     }
+
+    public function viewUserDashboard(){
+        $navbar = "without-options";
+        $footer = "true";
+        return view('userdashboard', compact(
+            'navbar',
+            'footer'
+        ));
+    }
+
+    public function viewLeaderboard(){
+        $navbar = "without-options";
+        $footer = "true";
+        return view('leaderboard', compact(
+            'navbar',
+            'footer'
+        ));
+    }
+
+    public function viewPrivacy(){
+        $navbar = "without-options";
+        $footer = "true";
+        return view('privacy-policy', compact(
+            'navbar',
+            'footer'
+        ));
+    }
+    
+    public function viewHistory(){
+        $navbar = "without-options";
+        $footer = "true";
+        return view('history', compact(
+            'navbar',
+            'footer'
+        ));
+    }
+
+    public function viewAchievement(){
+        $navbar = "without-options";
+        $footer = "true";
+        return view('achievement', compact(
+            'navbar',
+            'footer'
+        ));
+    }
     
 }
