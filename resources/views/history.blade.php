@@ -10,9 +10,9 @@
             <div class="left-section">
                 <div class="top-section left-frame"></div>
                 <div class="mid-section left-frame">
-                    <a href="#">Profile &nbsp;</a>
-                    <a href="#">History &nbsp;</a>
-                    <a href="#">Achievement &nbsp;</a>
+                    <a href="/user">Profile &nbsp;</a>
+                    <a href="/history">History &nbsp;</a>
+                    <a href="/achievement">Achievement &nbsp;</a>
                 </div>
                 <div class="bottom-section left-frame"></div>
             </div>

@@ -33,10 +33,10 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewUserDashboard(){
+    public function viewUser(){
         $navbar = "without-options";
         $footer = "true";
-        return view('userdashboard', compact(
+        return view('user', compact(
             'navbar',
             'footer'
         ));
