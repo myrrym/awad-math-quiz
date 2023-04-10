@@ -3,6 +3,7 @@
 @section('head')
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
+    <img class="pageLoader" src="/assets/img/meow-loader.gif" alt="">
 @endsection
 
 @section('content')
@@ -63,6 +64,16 @@
 
 @section('script')
     <!-- This is where your js/other scripts code goes -->
+    <script>
+        $(window).ready(function(){
+            // $(function(){
+                setTimeout(() => {
+                    $(".pageLoader").fadeOut(150)
+                }, 1000);
+            // })
+            // $('.pageLoader').fadeOut(500);
+        });
+    </script>
     <style type="text/css">
         body {
             background-color: #FFD390;
