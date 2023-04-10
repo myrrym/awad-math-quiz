@@ -33,6 +33,7 @@ class MathCatController extends Controller
         ));
     }
 
+
     public function viewUserDashboard(){
         $navbar = "without-options";
         $footer = "true";
@@ -73,6 +74,11 @@ class MathCatController extends Controller
         $navbar = "without-options";
         $footer = "true";
         return view('achievement', compact(
+
+    public function viewLogin(){
+        $navbar = "with-options";
+        $footer = "true";
+        return view('login', compact(
             'navbar',
             'footer'
         ));
