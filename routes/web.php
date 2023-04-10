@@ -23,3 +23,4 @@ Route::get('/quiz', [MathCatController::class, 'viewQuiz']);
 Route::get('/home', [MathCatController::class, 'viewHomePage']);
 Route::get('/login', [MathCatController::class, 'viewLogin']);
 Route::get('/', [MathCatController::class, 'viewHomePage']);
+
