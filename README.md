@@ -90,6 +90,14 @@ For initial cloning, do the following:
 
 If sail artisan fails, you may need to first run sail up -d once.
 
+for the jwt installation 
+    composer require tymon/jwt-auth
+    php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+    php artisan jwt:secret
+    
+for consuming api
+    npm install axios
+
 To setup the corresponding react environment, do the following:
 
     sail bash

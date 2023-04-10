@@ -21,8 +21,7 @@ use App\Http\Controllers\MathCatController;
 Route::get('/example', [MathCatController::class, 'viewExample']);
 Route::get('/quiz', [MathCatController::class, 'viewQuiz']);
 Route::get('/home', [MathCatController::class, 'viewHomePage']);
-
-Route::get('/userdashboard', [MathCatController::class, 'viewUserDashboard']);
+Route::get('/user', [MathCatController::class, 'viewUser']);
 Route::get('/leaderboard', [MathCatController::class, 'viewLeaderboard']);
 Route::get('/privacy', [MathCatController::class, 'viewPrivacy']);
 Route::get('/history', [MathCatController::class, 'viewHistory']);
