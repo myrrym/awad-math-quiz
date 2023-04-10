@@ -9,10 +9,11 @@
                 <div class="modal-body">
 
                     {{-- form for the login --}}
-                    <form>
+                    <form action="/api/login" method="POST">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -24,11 +25,12 @@
                         </div>
                         <div>
                             <!-- Button trigger modal -->
-<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
-    Forgot Password
-</button>
+                            <button type="button" class="btn btn-link" data-bs-toggle="modal"
+                                data-bs-target="#forgotPasswordModal">
+                                Forgot Password
+                            </button>
                         </div>
-                        <button type="submit"  class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     <p>dont have an account?</p>
                     <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#registerModal">
