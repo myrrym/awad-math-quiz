@@ -142,11 +142,117 @@ body{
     margin-right: 1.5rem;
 }
 
-.cat-paw{
-    width: 100px;
-    height: 102px;
-    display: flex;
-    flex-direction: column-reverse;
+.homepage{
+    position:relative;
 }
+
+.homeContent{
+    display: flex;
+    justify-content: center;
+}
+
+.homeWord{
+    position: absolute;
+    margin-top: 20px;
+    font-size: 16px;
+    color: gray;
+    font-weight: bolder;
+}
+
+.difficulty{
+    display: flex;
+    flex-direction: row;
+    margin-top: 70px;
+}
+
+.easy{
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+}
+
+.easy:hover {
+    opacity: 0.9;
+    background-color: rgb(236, 236, 236);
+}
+
+.easy-pic{
+    width: 120px;
+    height: 120px;
+}
+
+.medium{
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+}
+
+.medium:hover{
+    opacity: 0.9;
+    background-color: rgb(236, 236, 236);
+}
+
+.medium-pic{
+    width: 120px;
+    height: 120px;
+}
+
+.hard{
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+}
+
+.hard:hover{
+    opacity: 0.9;
+    background-color: rgb(236, 236, 236);
+}
+
+.hard-pic{
+    width: 120px;
+    height: 120px;
+}
+
+.whatTheMeow{
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+}
+
+.whatTheMeow:hover{
+    opacity: 0.9;
+    background-color: rgb(236, 236, 236);
+}
+
+.wtm-pic{
+    width: 120px;
+    height: 120px;
+}
+
+.cat-paw{
+    width: 110px;
+    height: 135px;
+    position: absolute;
+    margin-top: 16em;
+    left: 290px;
+}
+
+
 
 

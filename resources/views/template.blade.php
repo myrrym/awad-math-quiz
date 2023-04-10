@@ -38,6 +38,10 @@
             </div>
         </div>
 
+        <x-loginModal/>
+        <x-signup/>
+        <x-forgotpassword/>
+
     </div>
         
     @if ($footer == 'true')

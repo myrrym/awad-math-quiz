@@ -33,7 +33,12 @@ class MathCatController extends Controller
         ));
     }
 
+<<<<<<< HEAD
     public function viewUser(){
+=======
+
+    public function viewUserDashboard(){
+>>>>>>> 2a5f1bc2d3836a990026207fe97fdda4c7fb05c3
         $navbar = "without-options";
         $footer = "true";
         return view('user', compact(
@@ -73,6 +78,15 @@ class MathCatController extends Controller
         $navbar = "without-options";
         $footer = "true";
         return view('achievement', compact(
+            'navbar',
+            'footer'
+        ));
+    }
+
+    public function viewLogin(){
+        $navbar = "with-options";
+        $footer = "true";
+        return view('login', compact(
             'navbar',
             'footer'
         ));
