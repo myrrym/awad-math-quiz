@@ -74,6 +74,10 @@ class MathCatController extends Controller
         $navbar = "without-options";
         $footer = "true";
         return view('achievement', compact(
+            'navbar',
+            'footer'
+        ));
+    }
 
     public function viewLogin(){
         $navbar = "with-options";
