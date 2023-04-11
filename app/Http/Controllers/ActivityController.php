@@ -24,30 +24,29 @@ class ActivityController extends Controller
 
     function getCurrentRank($difficulty)
     {
-
-        $allData = Activity::all()->where('difficulty', $difficulty)->sortBy(function ($activity) {
-            return [
-                'score' => $activity->score,
-                'time' => $activity->time,
-            ];
-        });
-
-        $data = Activity::all()->where('difficulty', $difficulty)->where('username', 'fibwUT9UkA');
-        $bestScore = $data->max('score');
-        $bestActivity = $data->where('score', $bestScore)->first();
-        
-        $currentRank = -1;
-        for($i = 0; $i < count($allData); $i++)
-        {
-            if($allData[$i]->username === $bestActivity->username)
-            {
-                $currentRank = $i + 1;
-                break;
-            }
+        $bestActivity = Activity::where('difficulty', $difficulty)
+                                ->where('username', 'fibwUT9UkA')
+                                ->orderByDesc('score')
+                                ->orderBy('time')
+                                ->first();
+    
+        if (!$bestActivity) {
+            return -1;
         }
-
-        return $currentRank;
+    
+        $rank = Activity::where('difficulty', $difficulty)
+                        ->where(function ($query) use ($bestActivity) {
+                            $query->where('score', '>', $bestActivity->score)
+                                  ->orWhere(function ($query) use ($bestActivity) {
+                                      $query->where('score', '=', $bestActivity->score)
+                                            ->where('time', '<', $bestActivity->time);
+                                  });
+                        })
+                        ->count() + 1;
+    
+        return $rank;
     }
+    
 
     function getTestsCompleted($difficulty){
 
