@@ -19,6 +19,7 @@ class UsersSeeder extends Seeder
                 'email' => Str::random(10) . 'gmail.com',
                 'username' => Str::random(10),
                 'password' => 'password',
+                'picture' => 'cat1.jpg',
             ]);
         }
     }

@@ -20,15 +20,15 @@
         <div class="middle-section"></div>
         <div class="right-section">
             <div class="main-frame">
-                <div><img class="profile-picture" src="/assets/img/profile_picture.jpg" alt=""></div>
-                <div class="picture"><a href="#">change profile picture</a></div>
+                <div><img class="profile-picture" src="/assets/img/cats/cat1.jpg"></div>
+                <div class="change"><a href="">change profile picture</a></div>
                 <div class="label">username</div>
                 <div class="result">sir_meow</div>
                 <div class="label">email</div>
                 <div class="result">sir_meow@catmail.com</div>
                 <div class="label">joined since</div>
                 <div class="result">5th March 2023</div>
-                <div class="password"><a href="" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">change password</a></div>                
+                <div class="password"><a href="" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">change password</a></div>
             </div>
         </div>
     </div>
@@ -120,7 +120,7 @@
 
         .main-frame {
             background-color: white;
-            height:77vh;
+            height: 77vh;
             width: 100%;
             margin-top: 0px;
             padding: 30px;
@@ -146,7 +146,7 @@
             border-radius: 50%;
         }
 
-        .picture a {
+        .change a {
             color: #B6B6B6;
             font-size: 70%;
         }
