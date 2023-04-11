@@ -7,7 +7,7 @@
     @php
         $difficulty = $difficulty ?? 'Easy';
         $activities = app('App\Http\Controllers\LeaderboardController')->getBestActivityPerUser($difficulty);
-        $position = 4;
+        $position = 1;
     @endphp
 @endsection
 
@@ -16,46 +16,61 @@
         <div class="left-section">
             <div class="top-section left-frame"></div>
             <div class="mid-section left-frame">
-                <a href="Easy">Easy &nbsp;</a>
-                <a href="Medium">Medium &nbsp;</a>
-                <a href="Hard">Hard &nbsp;</a>
-                <a href="What the meow">What The Meow? &nbsp;</a>
+                <a href="Easy" class="{{ $difficulty == 'Easy' ? 'active' : '' }}">Easy &nbsp;</a>
+                <a href="Medium" class="{{ $difficulty == 'Medium' ? 'active' : '' }}">Medium &nbsp;</a>
+                <a href="Hard" class="{{ $difficulty == 'Hard' ? 'active' : '' }}">Hard &nbsp;</a>
+                <a href="What the meow" class="{{ $difficulty == 'What the meow' ? 'active' : '' }}">What The Meow?
+                    &nbsp;</a>
             </div>
             <div class="bottom-section left-frame"></div>
         </div>
         <div class="middle-section"></div>
 
         <div class="right-section">
-            <div class="right-frame">
-                <div class="second">2nd</div>
-                <div class='player'>player2</div>
-                <div class='time'>2:00:00</div>
-            </div>
-            <div class="right-frame">
-                <div class="first">1st</div>
-                <div class='player'>player1</div>
-                <div class='time'>1:00:00</div>
-            </div>
-            <div class="right-frame">
-                <div class="third">3rd</div>
-                <div class='player'>player3</div>
-                <div class='time'>3:00:00</div>
-            </div>
+            @foreach ($activities as $activity)
+                @if ($position == 1)
+                    <div class="right-frame">
+                        <div class="first">1st</div>
+                        <div class="player">{{ $activity['username'] }}</div>
+                        <div class="score">{{ $activity['score'] }}</div>
+                        <div class="time">{{ $activity['time'] }}</div>
+                    </div>
+                @elseif ($position == 2)
+                    <div class="right-frame">
+                        <div class="second">2nd</div>
+                        <div class="player">{{ $activity['username'] }}</div>
+                        <div class="score">{{ $activity['score'] }}</div>
+                        <div class="time">{{ $activity['time'] }}</div>
+                    </div>
+                @elseif ($position == 3)
+                    <div class="right-frame">
+                        <div class="third">3rd</div>
+                        <div class="player">{{ $activity['username'] }}</div>
+                        <div class="score">{{ $activity['score'] }}</div>
+                        <div class="time">{{ $activity['time'] }}</div>
+                    </div>
+                @endif
+                @php $position++ @endphp
+            @endforeach
             <div class="bottom-frame">
-                <table border='1'>
+                <table>
                     <tr>
-                        <td>Position</td>
+                        <td class="position">Position</td>
                         <td>Username</td>
                         <td>Score</td>
                         <td>Time</td>
                     </tr>
+                    @php $position = 1 @endphp
                     @foreach ($activities as $activity)
-                        <tr>
-                            <td>{{ $position++ }}</td>
-                            <td>{{ $activity['username'] }}</td>
-                            <td>{{ $activity['score'] }}</td>
-                            <td>{{ $activity['time'] }}</td>
-                        </tr>
+                        @if ($position > 3)
+                            <tr>
+                                <td class="position">{{ $position }}</td>
+                                <td>{{ $activity['username'] }}</td>
+                                <td>{{ $activity['score'] }}</td>
+                                <td>{{ $activity['time'] }}</td>
+                            </tr>
+                        @endif
+                        @php $position++ @endphp
                     @endforeach
                 </table>
             </div>
@@ -120,8 +135,8 @@
         }
 
         .left-frame a:hover {
-            background-color: #FEAE36;
-            color: white;
+            background-color: #FFD390;
+ 
         }
 
         .top-section {
@@ -136,6 +151,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .mid-section a.active {
+            background-color: #FEAE36;
+            color: white;
+            font-weight: bold;
         }
 
         .bottom-section {
@@ -160,7 +181,7 @@
 
         .right-frame {
             background-color: white;
-            height: 20vh;
+            height: 22vh;
             width: calc(33.3% - 10px);
             margin-bottom: 10px;
             padding: 10px;
@@ -171,7 +192,7 @@
 
         .bottom-frame {
             background-color: white;
-            height: 52vh;
+            height: 50vh;
             width: 100%;
             margin-top: 10px;
             padding: 10px;
@@ -180,24 +201,39 @@
             overflow: scroll;
         }
 
+        .bottom-frame table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        .bottom-frame td {
+            padding: 5px;
+        }
+
+        .position {
+            width: 30px;
+        }
+
         .first {
-            font-size: 400%;
+            font-size: 300%;
         }
 
         .second {
             padding-top: 5%;
-            font-size: 300%;
-            margin-bottom: 5%;
+            font-size: 250%;
+
         }
 
         .third {
             padding-top: 10%;
             font-size: 200%;
-            margin-bottom: 8%;
+
         }
 
         .player,
-        .time {
+        .time,
+        .score {
             font-size: 130%;
         }
     </style>
