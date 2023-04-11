@@ -8,16 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class MathCatController extends Controller
 {
-    public function viewHomePage(){
+    public function viewHomePage()
+    {
         $navbar = "with-options";
         $footer = "true";
-        return view('homepage' , compact(
+        return view('homepage', compact(
             'navbar',
             'footer'
         ));
     }
-    
-    public function viewExample(){
+
+    public function viewExample()
+    {
         $navbar = "with-options";
         $footer = "true";
         return view('example', compact(
@@ -26,16 +28,18 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewQuiz(){
+    public function viewQuiz()
+    {
         $navbar = "without-options";
         $footer = "true";
         return view('quiz', compact(
             'navbar',
             'footer'
-        ), );
+        ),);
     }
 
-    public function viewUser(){
+    public function viewUser()
+    {
         $navbar = "without-options";
         $footer = "true";
         return view('user', compact(
@@ -44,16 +48,19 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewLeaderboard(){
+    public function viewLeaderboard($difficulty)
+    {
         $navbar = "without-options";
         $footer = "true";
-        return view('leaderboard', compact(
-            'navbar',
-            'footer'
-        ));
+        return view(
+            'leaderboard',
+            ['difficulty' => $difficulty],
+            compact('navbar','footer')
+        );
     }
 
-    public function viewPrivacy(){
+    public function viewPrivacy()
+    {
         $navbar = "without-options";
         $footer = "true";
         return view('privacy-policy', compact(
@@ -61,15 +68,17 @@ class MathCatController extends Controller
             'footer'
         ));
     }
-    
-    public function viewHistory(){
+
+    public function viewHistory()
+    {
         $navbar = "without-options";
         $footer = "true";
         $request = new Request(['difficulty' => 'Easy']);
         return view('history', compact('request', 'navbar', 'footer'));
     }
 
-    public function viewAchievement(){
+    public function viewAchievement()
+    {
         $navbar = "without-options";
         $footer = "true";
         return view('achievement', compact(
@@ -78,7 +87,8 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewLogin(){
+    public function viewLogin()
+    {
         $navbar = "with-options";
         $footer = "true";
         return view('login', compact(
@@ -86,5 +96,4 @@ class MathCatController extends Controller
             'footer'
         ));
     }
-    
 }

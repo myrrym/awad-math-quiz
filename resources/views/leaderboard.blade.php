@@ -5,7 +5,8 @@
     <title>Two Section Page</title>
     <img class="pageLoader" src="/assets/img/meow-loader.gif" alt="">
     @php
-        $activities = app('App\Http\Controllers\LeaderboardController')->getBestActivityPerUser();
+        $difficulty = $difficulty ?? 'Easy';
+        $activities = app('App\Http\Controllers\LeaderboardController')->getBestActivityPerUser($difficulty);
         $position = 4;
     @endphp
 @endsection
@@ -15,10 +16,10 @@
         <div class="left-section">
             <div class="top-section left-frame"></div>
             <div class="mid-section left-frame">
-                <a href="#">Easy &nbsp;</a>
-                <a href="#">Medium &nbsp;</a>
-                <a href="#">Hard &nbsp;</a>
-                <a href="#">What The Meow? &nbsp;</a>
+                <a href="Easy">Easy &nbsp;</a>
+                <a href="Medium">Medium &nbsp;</a>
+                <a href="Hard">Hard &nbsp;</a>
+                <a href="What the meow">What The Meow? &nbsp;</a>
             </div>
             <div class="bottom-section left-frame"></div>
         </div>

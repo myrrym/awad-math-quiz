@@ -15,9 +15,9 @@ class LeaderboardController extends Controller
         return $data;
     }
 
-    function getBestActivityPerUser()
+    function getBestActivityPerUser($difficulty)
     {
-        $data = Activity::all()->where('difficulty', 'Easy');
+        $data = Activity::all()->where('difficulty', $difficulty);
 
         // Group records by username
         $groupedData = $data->groupBy('username');
