@@ -23,6 +23,9 @@ Route::get('/example', [MathCatController::class, 'viewExample']);
 Route::get('/quiz', [MathCatController::class, 'viewQuiz']);
 Route::get('/home', [MathCatController::class, 'viewHomePage']);
 Route::get('/user', [MathCatController::class, 'viewUser']);
+Route::get('/leaderboard', function(){
+    return redirect('/leaderboard/Easy');
+});
 Route::get('/leaderboard/{difficulty}', [MathCatController::class, 'viewLeaderboard']);
 Route::get('user/{username}', [UserController::class, 'loadView']);
 Route::get('/privacy', [MathCatController::class, 'viewPrivacy']);

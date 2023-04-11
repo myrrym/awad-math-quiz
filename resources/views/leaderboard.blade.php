@@ -231,7 +231,7 @@
         .player,
         .time,
         .score {
-            font-size: 130%;
+            font-size: 100%;
         }
     </style>
 @endsection
