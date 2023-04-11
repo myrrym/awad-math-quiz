@@ -3,6 +3,9 @@
 @section('head')
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
+    @php
+        $user = app('App\Http\Controllers\MathCatController')->getUser();
+    @endphp
 @endsection
 
 @section('content')
@@ -49,11 +52,11 @@
 
 
                 <div class="label">username</div>
-                <div class="result">sir_meow</div>
+                <div class="result">{{$user['username']}}</div>
                 <div class="label">email</div>
-                <div class="result">sir_meow@catmail.com</div>
+                <div class="result">{{$user['email']}}</div>
                 <div class="label">joined since</div>
-                <div class="result">5th March 2023</div>
+                <div class="result">{{$user['created_at']->format('Y-m-d')}}</div>
                 <div class="password"><a href="" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">change
                         password</a></div>
             </div>
@@ -187,22 +190,22 @@
         }
 
 
-/* 
-        .modal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1;
-            /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black w/ opacity */
+        /*
+            .modal {
+                display: none;
+                /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
         }
 
         /* Modal Content/Box */
@@ -245,7 +248,8 @@
             border-radius: 50%;
             cursor: pointer;
         }
-         */
+
+        */
     </style>
     <script>
         // Get the modal
