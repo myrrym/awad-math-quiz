@@ -4,7 +4,14 @@
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
     @php
-        $tengames = app('App\Http\Controllers\ActivityController')->getTenGames();
+        $tengames = app('App\Http\Controllers\AchievementController')->getTenGames();
+        $twentygames = app('App\Http\Controllers\AchievementController')->getTwentyGames();
+        $fiftygames = app('App\Http\Controllers\AchievementController')->getFiftyGames();
+        $hundredgames = app('App\Http\Controllers\AchievementController')->getHundredGames();
+        $tenscore = app('App\Http\Controllers\AchievementController')->getTenScore();
+        $fifteenscore = app('App\Http\Controllers\AchievementController')->getFifteenScore();
+        $fullscore = app('App\Http\Controllers\AchievementController')->getFullScore();
+        $whatthemeow = app('App\Http\Controllers\AchievementController')->getWhatTheMeow();
     @endphp
 @endsection
 
@@ -24,7 +31,6 @@
         <div class="right-section">
             <div class="main-frame ">
                 <table id="myTable" class="my-table"></table>
-                {{ $tengames }}
                 <script>
                     // retrieve data from SQL and store in 'data' variable
                     let data = [{
@@ -35,49 +41,49 @@
                         {
                             name: 'cat tower.png',
                             description: 'play 100 games',
-                            Achieved: 'true'
+                            Achieved: '{{ $hundredgames }}'
 
                         },
                         {
                             name: 'fish.png',
                             description: 'play 10 games',
-                            Achieved: {{$tengames}},
+                            Achieved: '{{ $tengames }}',
 
                         },
                         {
                             name: 'ball.png',
                             description: 'play 20 games',
-                            Achieved: 'true'
+                            Achieved: '{{ $twentygames }}',
 
                         },
                         {
                             name: 'mouse.png',
                             description: 'play 50 games',
-                            Achieved: 'false'
+                            Achieved: '{{ $fiftygames }}'
 
                         },
                         {
                             name: 'rubbing cat.png',
-                            description: 'get a score of 1000 and above',
-                            Achieved: 'true'
+                            description: 'get a score of 15 and above',
+                            Achieved: '$fifteenscore'
 
                         },
                         {
                             name: 'cat comb.png',
-                            description: 'get a score of 500 and above',
-                            Achieved: 'true'
+                            description: 'get a score of 10 and above',
+                            Achieved: '{{$tenscore}}'
 
                         },
                         {
                             name: 'cat tin.png',
-                            description: 'get a quiz 20/20',
-                            Achieved: 'false'
+                            description: 'get full marks!',
+                            Achieved: '{{$fullscore}}'
 
                         },
                         {
                             name: 'bone.png',
-                            description: 'complete one game on what the meow mode',
-                            Achieved: 'true'
+                            description: 'play 1 quiz in what the meow mode',
+                            Achieved: '{{$whatthemeow}}'
 
                         }
                     ];
@@ -121,17 +127,6 @@
                             }
                         }
 
-                        var row1 = table.insertRow();
-                        for (var x = x_temp; x < x_temp + 3; x++) {
-                            var cell = row1.insertCell(0);
-                            cell.innerHTML = data[x].Achieved;
-                            cell.style.width = '33.33%';
-
-                            if (data[x].Achieved === 'false') {
-                                cell.style.opacity = 0.2;
-                            }
-                        }
-
                         j_temp = j;
                         x_temp = x;
                     }
@@ -150,10 +145,8 @@
             height: 100%;
         }
 
-
         .container {
-            height: 100%;
-            max-height: 100%;
+            height: 80vh;
             display: flex;
             flex-wrap: wrap;
             align-items: stretch;
@@ -238,7 +231,7 @@
         .main-frame {
             background-color: white;
             height: 100%;
-            /* max-height: 77vh; */
+            width:100%;
             padding: 30px;
             box-sizing: border-box;
             border-radius: 20px;
@@ -246,33 +239,6 @@
             overflow-y: scroll;
         }
 
-        .label {
-            color: #B6B6B6;
-            margin-top: 30px;
-        }
 
-        .result {
-            font-size: 160%;
-        }
-
-        .profile-picture {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .picture a {
-            color: #B6B6B6;
-            font-size: 70%;
-        }
-
-        .password {
-            margin-top: 30px;
-        }
-
-        .password a {
-            color: #AC5858;
-        }
     </style>
 @endsection
