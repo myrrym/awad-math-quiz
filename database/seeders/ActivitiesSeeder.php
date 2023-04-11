@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\User;
+use Carbon\Carbon;
 
 class ActivitiesSeeder extends Seeder
 {
@@ -37,7 +38,7 @@ class ActivitiesSeeder extends Seeder
       }
 
       $user = $users->random();
-
+      $timestamp = Carbon::now()->subSeconds(mt_rand(1, 20))->addMilliseconds(mt_rand(0, 999));
       $time = rand(1, 100) . '.' . rand(0, 99);
 
       DB::table('activities')->insert([
@@ -45,6 +46,7 @@ class ActivitiesSeeder extends Seeder
         'score' => $randomNumber,
         'difficulty' => $randomString,
         'time' => $time,
+        'created_at' => $timestamp
       ]);
     }
   }
