@@ -96,12 +96,10 @@
         }
 
         .container {
-            height: 80vh;
-            border: 1px solid black;
+            height: 78vh;
             display: flex;
-            flex-wrap: wrap;
             align-items: stretch;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         .left-section {
@@ -197,7 +195,7 @@
             padding: 10px;
             box-sizing: border-box;
             border-radius: 20px;
-            overflow: scroll;
+            overflow-y: auto;
         }
 
         .bottom-frame table {
