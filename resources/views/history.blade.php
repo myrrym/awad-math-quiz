@@ -87,7 +87,6 @@ $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($d
 
         .container {
             height: 78vh;
-            border: 1px solid black;
             display: flex;
             align-items: stretch;
             /* overflow: hidden; */
