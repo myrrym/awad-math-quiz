@@ -184,6 +184,10 @@ body{
     margin-bottom: 0px;
 }
 
+.card-diff{
+    cursor: pointer;
+}
+
 .easy{
     background-color: white;
     border-radius: 15px;
