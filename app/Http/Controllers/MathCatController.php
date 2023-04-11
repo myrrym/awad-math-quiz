@@ -32,7 +32,7 @@ class MathCatController extends Controller
         return view('quiz', compact(
             'navbar',
             'footer'
-        ));
+        ), );
     }
 
     public function viewUser(){
@@ -65,10 +65,8 @@ class MathCatController extends Controller
     public function viewHistory(){
         $navbar = "without-options";
         $footer = "true";
-        return view('history', compact(
-            'navbar',
-            'footer'
-        ));
+        $request = new Request(['difficulty' => 'Easy']);
+        return view('history', compact('request', 'navbar', 'footer'));
     }
 
     public function viewAchievement(){

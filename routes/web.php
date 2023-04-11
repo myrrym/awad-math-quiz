@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MathCatController;
 use App\Http\Controllers\LeaderboardController;
-
+use App\Http\Controllers\ActivityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +25,7 @@ Route::get('/home', [MathCatController::class, 'viewHomePage']);
 Route::get('/user', [MathCatController::class, 'viewUser']);
 Route::get('/leaderboard', [MathCatController::class, 'viewLeaderboard']);
 Route::get('/privacy', [MathCatController::class, 'viewPrivacy']);
-Route::get('/history', [MathCatController::class, 'viewHistory']);
+Route::get('/history', [MathCatController::class, 'viewHistory'])->name('history');
 Route::get('/achievement', [MathCatController::class, 'viewAchievement']);
 
 Route::get('/login', [MathCatController::class, 'viewLogin']);

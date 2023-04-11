@@ -6,9 +6,13 @@
 @endsection
 
 @php
-  $activities = app('App\Http\Controllers\ActivityController')->getActivities();
-  $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity();
-@endphp
+  $activities = app('App\Http\Controllers\ActivityController')->getActivities($request);
+  $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($request);
+  $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($request);
+
+  $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($request);
+
+  @endphp
 
 @section('content')
         <div class="container">
@@ -25,16 +29,16 @@
 
             <div class="right-section">
                 <div class="top-frame">
-                    <a href="#">Easy &nbsp;</a>
+                    <a href="{{ route('history', ['difficulty' => 'Easy']) }}">Easy &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="#">Medium &nbsp;</a>
+                    <a href="{{ route('history', ['difficulty' => 'Medium']) }}">Medium &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="#">Hard &nbsp;</a>
+                    <a href="{{ route('history', ['difficulty' => 'Hard']) }}">Hard &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="#">What The Meow? &nbsp;</a>
+                    <a href="{{ route('history', ['difficulty' => 'What the meow']) }}">What The Meow? &nbsp;</a>
                 </div>
                 <div class="right-frame">
                     <div class="title">best score</div>
@@ -44,14 +48,14 @@
                 </div>
                 <div class="right-frame">
                     <div class="title">current rank</div>
-                    <div class='info'>1234</div>
+                    <div class='info'>{{$currentRank}}</div>
                 </div>
                 <div class="right-frame">
                     <div class="title">tests completed</div>
-                    <div class='info'>111</div>
+                    <div class='info'>{{$totalTest}}</div>
                 </div>
                 <div class="bottom-frame">
-                    <table class="history-table">
+                    <table class="activity-table">
                         <thead>
                           <tr>
                             <th>Score</th>
@@ -64,7 +68,7 @@
                             <tr>
                               <td>{{$activity['score']}}</td>
                               <td>{{$activity['time']}}</td>
-                              <td>{{$activity['created_at']}}</td>
+                              <td class="activity-table-time">{{$activity['created_at']}}</td>
                             </tr>
                           @endforeach
                         </tbody>
@@ -101,10 +105,15 @@
             flex-direction: column;
         }
 
-        .history-table td{
+        .activity-table{
+            width: 100%;
+        }
+
+        .activity-table td{
             font-size: 15px;
             width: 41%;
         }
+
         .left-frame {
             height: 100%;
             width: 100%;
