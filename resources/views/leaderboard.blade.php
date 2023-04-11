@@ -4,6 +4,10 @@
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
     <img class="pageLoader" src="/assets/img/meow-loader.gif" alt="">
+    @php
+        $activities = app('App\Http\Controllers\LeaderboardController')->getBestActivityPerUser();
+        $position = 4;
+    @endphp
 @endsection
 
 @section('content')
@@ -37,17 +41,12 @@
                 <div class='time'>3:00:00</div>
             </div>
             <div class="bottom-frame">
-                @php
-                    $activities = app('App\Http\Controllers\LeaderboardController')->getActivities();
-                    $position = 4;
-                @endphp
                 <table border='1'>
                     <tr>
                         <td>Position</td>
                         <td>Username</td>
                         <td>Score</td>
                         <td>Time</td>
-                        <td>Date</td>
                     </tr>
                     @foreach ($activities as $activity)
                         <tr>
@@ -55,7 +54,6 @@
                             <td>{{ $activity['username'] }}</td>
                             <td>{{ $activity['score'] }}</td>
                             <td>{{ $activity['time'] }}</td>
-                            <td>{{ $activity['created_at'] }}</td>
                         </tr>
                     @endforeach
                 </table>
