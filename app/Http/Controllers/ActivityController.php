@@ -10,13 +10,13 @@ class ActivityController extends Controller
     function getActivities($difficulty)
     {
 
-        return Activity::all()->where('username', 'JofK0utOpd')->where('difficulty', $difficulty)->sortByDesc('created_at');
+        return Activity::all()->where('username', '2XDtwzkctF')->where('difficulty', $difficulty)->sortByDesc('created_at');
     }
 
     function getBestActivity($difficulty)
     {
 
-        $data = Activity::all()->where('username', 'JofK0utOpd')->where('difficulty', $difficulty);
+        $data = Activity::all()->where('username', '2XDtwzkctF')->where('difficulty', $difficulty);
         $bestScore = $data->max('score');
         $bestActivity = $data->where('score', $bestScore)->first();
         return $bestActivity;
@@ -25,7 +25,7 @@ class ActivityController extends Controller
     function getCurrentRank($difficulty)
     {
         $bestActivity = Activity::where('difficulty', $difficulty)
-                                ->where('username', 'fibwUT9UkA')
+                                ->where('username', '2XDtwzkctF')
                                 ->orderByDesc('score')
                                 ->orderBy('time')
                                 ->first();
@@ -50,7 +50,7 @@ class ActivityController extends Controller
 
     function getTestsCompleted($difficulty){
 
-        return count(Activity::all()->where('difficulty', $difficulty)->where('username', 'JofK0utOpd'));
+        return count(Activity::all()->where('difficulty', $difficulty)->where('username', '2XDtwzkctF'));
     }
 
 }

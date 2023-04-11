@@ -15,35 +15,22 @@ class LeaderboardController extends Controller
         return $data;
     }
 
-    function getBestActivityPerUser($difficulty)
+    public function getBestActivityPerUser ($difficulty)
     {
-        $data = Activity::all()->where('difficulty', $difficulty);
-
-        // Group records by username
-        $groupedData = $data->groupBy('username');
-
-        $bestActivities = [];
-
-        // Find the best activity for each user
-        foreach ($groupedData as $username => $activities) {
-            // Sort activities by highest score first, then least time taken
-            $sortedActivities = $activities->sortByDesc('score')->sortBy('time_taken');
-
-            // Get the first (highest score, least time taken) activity
-            $bestActivity = $sortedActivities->first();
-
-            // Add the best activity to the array
-            $bestActivities[$username] = $bestActivity;
-        }
-
-        // Sort users by highest score with the least amount of time taken
-        uasort($bestActivities, function ($a, $b) {
-            if ($a->score == $b->score) {
-                return $a->time_taken <=> $b->time_taken;
+        $activities = Activity::where('difficulty', $difficulty)
+            ->orderBy('score', 'desc')
+            ->orderBy('time')
+            ->get();
+    
+        $bestActivities = collect();
+    
+        $activities->each(function ($activity) use ($bestActivities) {
+            if (!$bestActivities->has($activity->username)) {
+                $bestActivities->put($activity->username, $activity);
             }
-            return $b->score <=> $a->score;
         });
-
-        return $bestActivities;
+    
+        return $bestActivities->values();
     }
+    
 }
