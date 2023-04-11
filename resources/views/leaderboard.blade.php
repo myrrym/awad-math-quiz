@@ -136,7 +136,6 @@
 
         .left-frame a:hover {
             background-color: #FFD390;
- 
         }
 
         .top-section {
