@@ -81,10 +81,11 @@
                 // get the table element from HTML
                 let table = document.getElementById('myTable');
 
-                // loop through the data and create rows with three columns
+                
                 var j_temp = 0;
                 var x_temp = 0;
-
+                
+                // loop through the data and create rows with three columns
                 for (var i = 0; i < 3; i++) {
                     var row = table.insertRow();
 
@@ -144,13 +145,6 @@
         align-items: stretch;
         overflow: hidden;
     }
-
-    /* horizontal scrollbar for tables if mobile screen */
-    /* .tablemobile {
-        overflow-x: auto;
-        display: block;
-    } */
-
 
     .my-table td,
     .my-table th {
