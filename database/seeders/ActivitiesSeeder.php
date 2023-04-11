@@ -18,7 +18,7 @@ class ActivitiesSeeder extends Seeder
   {
     $users = User::all();
 
-    for ($i = 1; $i < 100; $i++) {
+    for ($i = 1; $i <= 100; $i++) {
       $randomNumber = rand(1, 20);
       $randomDifficultyNum = rand(1, 4);
 

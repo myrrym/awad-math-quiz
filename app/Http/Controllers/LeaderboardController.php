@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class LeaderboardController extends Controller
 {
-    function getActivities()
-    {
-        $data = Activity::all();
-        return $data;
-    }
 
     public function getBestActivityPerUser ($difficulty)
     {

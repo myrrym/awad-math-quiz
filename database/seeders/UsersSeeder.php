@@ -15,12 +15,14 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i < 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
+            $username = Str::random(10);
+
             DB::table('users')->insert([
-                'email' => Str::random(10) . 'gmail.com',
-                'username' => Str::random(10),
+                'username' => $username,
+                'email' => $username . '@gmail.com',
                 'password' => 'password',
-                'picture' => 'cat1.jpg',
+                'picture' => 'cat'.rand(1,9).'.jpg',
                 'created_at' => Carbon::now()->subSeconds(mt_rand(1, 20))->addMilliseconds(mt_rand(0, 999)),
             ]);
         }

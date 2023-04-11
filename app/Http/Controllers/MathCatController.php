@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 
 class MathCatController extends Controller
@@ -99,5 +100,11 @@ class MathCatController extends Controller
             'navbar',
             'footer'
         ));
+    }
+
+    public function getUser(){
+        $data = User::all()->where('username', 'vWl8XZs0ww')-> first();
+
+        return $data;
     }
 }

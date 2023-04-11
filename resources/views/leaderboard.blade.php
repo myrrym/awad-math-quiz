@@ -58,7 +58,7 @@
                         <td class="position">Position</td>
                         <td>Username</td>
                         <td>Score</td>
-                        <td>Time</td>
+                        <td>Time(s)</td>
                     </tr>
                     @php $position = 1 @endphp
                     @foreach ($activities as $activity)
