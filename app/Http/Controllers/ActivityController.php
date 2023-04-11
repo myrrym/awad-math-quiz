@@ -19,4 +19,13 @@ class ActivityController extends Controller
         $bestActivity = $data->where('score', $bestScore)->first();
         return $bestActivity;
     }
+
+    function getTenGames()
+    {
+        $total = count(Activity::where('username','2qrqVQRBYj')->get());
+        if ($total >= 1000) 
+            return 'true';
+        else
+            return 'false'; 
+    }
 }
