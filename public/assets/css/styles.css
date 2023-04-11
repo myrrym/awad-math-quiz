@@ -73,11 +73,12 @@ body{
     text-align: center;
     font-size: 30pt;
     position: relative;
+    padding: 10rem 0;
 }
-.block-question-score-parent{
+.block-question-time-parent{
     display: flex;
 }
-.block-question-score{
+.block-question-time{
     font-family: 'Amiko-Regular';
     background-color: #7E51B9;
     border-radius: 50px;
@@ -127,14 +128,30 @@ body{
 .block-answer-btn-1{
     background-color: #F92A4D;
 }
+.block-answer-btn-1:hover{
+    cursor: pointer;
+    background-color: #fb748a;
+}
 .block-answer-btn-2{
     background-color: #247FEA;
+}
+.block-answer-btn-2:hover{
+    cursor: pointer;
+    background-color: #6AA9F0;
 }
 .block-answer-btn-3{
     background-color: #FFC035;
 }
+.block-answer-btn-3:hover{
+    cursor: pointer;
+    background-color: #FFD270;
+}
 .block-answer-btn-4{
     background-color: #25B216;
+}
+.block-answer-btn-4:hover{
+    cursor: pointer;
+    background-color: #38E425;
 }
 .block-answer-btn-img{
     height: 3.5rem;
@@ -152,6 +169,7 @@ body{
 }
 
 .homeWord{
+    text-align: center;
     position: absolute;
     margin-top: 20px;
     font-size: 16px;
@@ -164,6 +182,10 @@ body{
     flex-direction: row;
     margin-top: 90px;
     margin-bottom: 0px;
+}
+
+.card-diff{
+    cursor: pointer;
 }
 
 .easy{

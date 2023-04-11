@@ -20,75 +20,102 @@
     <div class="middle-section"></div>
     <div class="right-section">
         <div class="main-frame ">
-        <table id="myTable" class="my-table"></table>
+            <table id="myTable" class="my-table"></table>
             <script>
                 // retrieve data from SQL and store in 'data' variable
                 let data = [{
                         name: 'cat neck.png',
-                        description: 'Create account'
+                        description: 'Create account',
+                        Achieved: 'true'
                     },
                     {
                         name: 'cat tower.png',
-                        description: 'play 100 games'
+                        description: 'play 100 games',
+                        Achieved: 'true'
+
                     },
                     {
                         name: 'fish.png',
-                        description: 'play 10 games'
+                        description: 'play 10 games',
+                        Achieved: 'true'
+
                     },
                     {
                         name: 'ball.png',
-                        description: 'play 20 games'
+                        description: 'play 20 games',
+                        Achieved: 'true'
+
                     },
                     {
                         name: 'mouse.png',
-                        description: 'play 50 games'
+                        description: 'play 50 games',
+                        Achieved: 'false'
+
                     },
                     {
                         name: 'rubbing cat.png',
-                        description: 'get a score of 1000 and above'
+                        description: 'get a score of 1000 and above',
+                        Achieved: 'true'
+
                     },
                     {
                         name: 'cat comb.png',
-                        description: 'get a score of 500 and above'
+                        description: 'get a score of 500 and above',
+                        Achieved: 'true'
+
                     },
                     {
                         name: 'cat tin.png',
-                        description: 'get a quiz 20/20'
+                        description: 'get a quiz 20/20',
+                        Achieved: 'false'
+
                     },
                     {
                         name: 'bone.png',
-                        description: 'complete one game on what the meow mode'
+                        description: 'complete one game on what the meow mode',
+                        Achieved: 'true'
+
                     }
                 ];
 
                 // get the table element from HTML
                 let table = document.getElementById('myTable');
 
-                // loop through the data and create rows with three columns
+                
                 var j_temp = 0;
                 var x_temp = 0;
-
+                
+                // loop through the data and create rows with three columns
                 for (var i = 0; i < 3; i++) {
                     var row = table.insertRow();
 
-                    for (var j = j_temp; j < j_temp+3; j++) {
+                    for (var j = j_temp; j < j_temp + 3; j++) {
                         var cell = row.insertCell(0);
                         var img = document.createElement('img');
                         img.src = '/assets/img/achievementImg/' + data[j].name;
                         img.alt = data[j].name;
                         img.width = 150; // set width to 100px
                         img.height = 150; // set height to 100px
+
+                        if(data[j].Achieved === 'false')
+                        {
+                            img.style.opacity = 0.2;
+                        }
+
                         cell.appendChild(img);
 
                         cell.style.width = '33.33%';
                     }
-                    
+
                     var row1 = table.insertRow();
-                    for (var x = x_temp; x < x_temp+3; x++) {
+                    for (var x = x_temp; x < x_temp + 3; x++) {
                         var cell = row1.insertCell(0);
                         cell.innerHTML = data[x].description;
-
                         cell.style.width = '33.33%';
+
+                        if (data[x].Achieved === 'false') {
+                            cell.style.opacity = 0.2;
+                         }
                     }
 
                     j_temp = j;
@@ -106,20 +133,23 @@
 <!-- This is where your js/other scripts code goes -->
 <style type="text/css">
     body {
-        background-color: #FFD390;
+        height: 100%;
     }
 
-    .my-table td, .my-table th {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-
+   
     .container {
         height: 100%;
+        max-height: 100%;
         display: flex;
         flex-wrap: wrap;
         align-items: stretch;
         overflow: hidden;
+    }
+
+    .my-table td,
+    .my-table th {
+        border: 1px solid #ddd;
+        padding: 8px;
     }
 
     .left-section {
@@ -199,9 +229,8 @@
         box-sizing: border-box;
         border-radius: 20px;
         text-align: center;
-        /* overflow-y: scroll; */
+        overflow-y: scroll;
     }
-
 
     .label {
         color: #B6B6B6;
