@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\User;
 
-class HistorySeeder extends Seeder
+class ActivitiesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -38,10 +38,13 @@ class HistorySeeder extends Seeder
               
               $user = $users -> random();
 
+              //$time = rand(1, 20);
+
             DB::table('activities')->insert([
                 'name' => $user->username,
                 'score' => $randomNumber,
                 'difficulty' => $randomString,
+                //'time' => $time,
             ]);
         }
     }

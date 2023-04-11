@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('difficulty');
             $table->string('score');
+            $table->double('time');
             $table->timestamps();
         });
     }
