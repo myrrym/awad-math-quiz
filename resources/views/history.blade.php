@@ -6,7 +6,7 @@
 @endsection
 
 @php
-
+$difficulty = $difficulty ?? 'Easy';
 $activities = app('App\Http\Controllers\ActivityController')->getActivities($difficulty);  
 $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($difficulty);
 $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($difficulty);
