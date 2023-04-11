@@ -50,7 +50,11 @@
         <!-- nothing -->
     @endif
 
-    @yield("script")
+    <script>
+        $(document).ready(function() {
+            @yield("script")
+        });
+    </script>
 </body>
 
 </html>

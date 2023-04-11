@@ -11,21 +11,16 @@
             <p class="homeWord"> Test your math skill, <br> Fight for the top!</p>
                 <div class="difficulty">
                     <a class="easy"><img class="easy-pic" src="/assets/img/easy.png" alt=""><br>EASY</a>
-                    <!-- <img class="cat-paw-1" src="/assets/img/cat-paw-home.png" alt=""> -->
                     <a class="medium"><img class="medium-pic" src="/assets/img/medium.png" alt=""><br>MEDIUM</a>
-                    <!-- <img class="cat-paw-2" src="/assets/img/cat-paw-home.png" alt=""> -->
                     <a class="hard"><img class="hard-pic" src="/assets/img/hard.png" alt=""><br>HARD</a>
-                    <!-- <img class="cat-paw-3" src="/assets/img/cat-paw-home.png" alt=""> -->
                     <a class="whatTheMeow"><img class="wtm-pic" src="/assets/img/wtm.png" alt=""><br>WHAT THE MEOW</a>
-                    <!-- <img class="cat-paw-4" src="/assets/img/cat-paw-home.png" alt=""> -->
-                    
                 </div>
         </div>
         <div class="paws">
-                    <img class="cat-paw-1" src="/assets/img/cat-paw-home.png" alt="">
-                    <img class="cat-paw-2" src="/assets/img/cat-paw-home.png" alt="">
-                    <img class="cat-paw-3" src="/assets/img/cat-paw-home.png" alt="">
-                    <img class="cat-paw-4" src="/assets/img/cat-paw-home.png" alt="">
+            <img class="cat-paw-1" src="/assets/img/cat-paw-home.png" alt="">
+            <img class="cat-paw-2" src="/assets/img/cat-paw-home.png" alt="">
+            <img class="cat-paw-3" src="/assets/img/cat-paw-home.png" alt="">
+            <img class="cat-paw-4" src="/assets/img/cat-paw-home.png" alt="">
         </div>
     </div>
     

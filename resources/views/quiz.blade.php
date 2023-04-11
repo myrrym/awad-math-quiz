@@ -9,8 +9,8 @@
 
         <div class="row">
             <div class="col-2">
-                <div class="block-question-score-parent">
-                    <div class="block-question-score">101</div>
+                <div class="block-question-time-parent">
+                    <div class="block-question-time" id="js-time">0</div>
                 </div>
             </div>
             <div class="col-8">
@@ -51,5 +51,13 @@
 @endsection
 
 @section("script")
-    <!-- This is where your js/other scripts code goes -->
+    console.log("ready");
+    
+    <!-- timer -->
+    var time = new Date;
+
+    setInterval(function() {
+        $('#js-time').text(Math.round((new Date - time) / 1000));
+    }, 1000);
+    
 @endsection
