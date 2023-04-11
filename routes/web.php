@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MathCatController;
+use App\Http\Controllers\LeaderboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,3 @@ Route::get('/achievement', [MathCatController::class, 'viewAchievement']);
 
 Route::get('/login', [MathCatController::class, 'viewLogin']);
 Route::get('/', [MathCatController::class, 'viewHomePage']);
-
