@@ -51,13 +51,16 @@
 @endsection
 
 @section("script")
-    console.log("ready");
-    
-    <!-- timer -->
-    var time = new Date;
+    <script>
+        $(document).ready(function() {
+            console.log("ready");
+            
+            // timer
+            var time = new Date;
 
-    setInterval(function() {
-        $('#js-time').text(Math.round((new Date - time) / 1000));
-    }, 1000);
-    
+            setInterval(function() {
+                $('#js-time').text(Math.round((new Date - time) / 1000));
+            }, 1000);
+        });
+    </script>
 @endsection
