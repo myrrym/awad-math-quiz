@@ -6,13 +6,12 @@
 @endsection
 
 @php
-  $activities = app('App\Http\Controllers\ActivityController')->getActivities($request);
-  $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($request);
-  $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($request);
 
-  $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($request);
-
-  @endphp
+$activities = app('App\Http\Controllers\ActivityController')->getActivities($difficulty);  
+$bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($difficulty);
+$totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($difficulty);
+$currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($difficulty);
+@endphp
 
 @section('content')
         <div class="container">
@@ -29,18 +28,19 @@
 
             <div class="right-section">
                 <div class="top-frame">
-                    <a href="{{ route('history', ['difficulty' => 'Easy']) }}">Easy &nbsp;</a>
+                    <a href="Easy">Easy &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="{{ route('history', ['difficulty' => 'Medium']) }}">Medium &nbsp;</a>
+                    <a href="Medium">Medium &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="{{ route('history', ['difficulty' => 'Hard']) }}">Hard &nbsp;</a>
+                    <a href="Hard">Hard &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="{{ route('history', ['difficulty' => 'What the meow']) }}">What The Meow? &nbsp;</a>
+                    <a href="What the meow">What The Meow? &nbsp;</a>
                 </div>
                 <div class="right-frame">
+                    
                     <div class="title">best score</div>
                     <div class='info'>{{$bestActivity['score']}}</div>
                     <div class='date'>{{$bestActivity['time']}}</div>

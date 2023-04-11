@@ -69,12 +69,16 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewHistory()
+    public function viewHistory($difficulty)
     {
         $navbar = "without-options";
         $footer = "true";
-        $request = new Request(['difficulty' => 'Easy']);
-        return view('history', compact('request', 'navbar', 'footer'));
+        
+        return view(
+            'history',
+            ['difficulty' => $difficulty],
+            compact('navbar','footer')
+        );
     }
 
     public function viewAchievement()
