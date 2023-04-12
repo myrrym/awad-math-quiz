@@ -15,15 +15,12 @@ class MathCatController extends Controller
         $footer = "true";
         $user_id = $request->session()->get('user_id');
         $user = User::find($user_id);
-<<<<<<< HEAD
-=======
         
         if($user){
             $navbar = "logged-in-with-options";
         }else{
             $navbar = "with-options";
         }
->>>>>>> ad1cbd1048490ae9907be53106419aa1870c543f
 
         return view(
             'homepage',
@@ -61,9 +58,7 @@ class MathCatController extends Controller
 
         // generate q based on difficulty
         if($diff == "easy"){
-<<<<<<< HEAD
             
-=======
             function calc($a,$sym,$b){
                 switch($sym) {
                     case '+': return $a + $b;
@@ -100,7 +95,6 @@ class MathCatController extends Controller
     
                 $quiz[$i] = [$qNum[$i], $question[$i], $shuffledAnswers[$i]];
             }
->>>>>>> ad1cbd1048490ae9907be53106419aa1870c543f
         }
         else if($diff == "medium"){
             // here
