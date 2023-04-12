@@ -25,8 +25,8 @@ class UserAchievementsSeeder extends Seeder
 
           // Insert into user_achievements table
           DB::table('user_achievements')->insert([
-              'username' => $user->username,
-              'achievement_id' => $achievement->achievement_id,
+              'user_id' => $user->id,
+              'achievement_id' => $achievement->id,
               'achieved_at' => now(),
           ]);
       }
