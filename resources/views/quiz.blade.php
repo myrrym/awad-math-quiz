@@ -2,6 +2,7 @@
 
 @section("head")
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
+    <img class="pageLoader" src="/assets/img/meow-loader.gif" alt="">
 @endsection
 
 @section("content")
@@ -51,6 +52,16 @@
 @endsection
 
 @section("script")
+    <script>
+        $(window).ready(function() {
+            // $(function(){
+            setTimeout(() => {
+                $(".pageLoader").fadeOut(150)
+            }, 1000);
+            // })
+            // $('.pageLoader').fadeOut(500);
+        });
+    </script>
     <script>
         $(document).ready(function() {
             console.log("ready");
