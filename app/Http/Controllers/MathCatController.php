@@ -29,7 +29,6 @@ class MathCatController extends Controller
         ));
     }
 
-<<<<<<< HEAD
     public function viewQuiz($diff){
         $diff_array = [
             'easy',
@@ -41,12 +40,14 @@ class MathCatController extends Controller
             return abort(404);
         };
 
-=======
-    public function viewQuiz()
-    {
->>>>>>> cf4595a59bc17d88563718db3dc2946a132de015
         $navbar = "without-options";
         $footer = "true";
+
+        // generate q based on difficulty
+        if($diff == "easy"){
+            
+        }
+
         return view('quiz', compact(
             'navbar',
             'footer'
