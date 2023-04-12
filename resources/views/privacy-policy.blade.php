@@ -43,7 +43,6 @@
 
         .container {
             height: 578px;
-            border: 1px solid black;
             display: flex;
             flex-wrap: wrap;
             align-items: stretch;

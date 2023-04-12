@@ -30,15 +30,15 @@ class MathCatController extends Controller
         );
     }
 
-    public function viewExample()
-    {
-        $navbar = "with-options";
-        $footer = "true";
-        return view('example', compact(
-            'navbar',
-            'footer'
-        ));
-    }
+    // public function viewExample()
+    // {
+    //     $navbar = "with-options";
+    //     $footer = "true";
+    //     return view('example', compact(
+    //         'navbar',
+    //         'footer'
+    //     ));
+    // }
 
     public function viewQuiz($diff)
     {
@@ -115,12 +115,13 @@ class MathCatController extends Controller
 
     public function viewUser()
     {
-        if (session()->get('user')) {
-            $navbar = "logged-in-with-options";
-        } else {
-            $navbar = "with-options";
+        $navbar = "logged-in-with-options";
+        
+        if (!(session()->get('user'))) {
+            return redirect('/');
         }
         $footer = "true";
+
         return view('user', compact(
             'navbar',
             'footer'
@@ -154,10 +155,9 @@ class MathCatController extends Controller
 
     public function viewHistory($difficulty)
     {
-        if (session()->get('user')) {
-            $navbar = "logged-in-with-options";
-        } else {
-            $navbar = "with-options";
+        $navbar = "logged-in-with-options";
+        if (!(session()->get('user'))) {
+            return redirect('/');
         }
         $footer = "true";
 
@@ -170,27 +170,13 @@ class MathCatController extends Controller
 
     public function viewAchievement()
     {
-        if (session()->get('user')) {
-            $navbar = "logged-in-with-options";
-        } else {
-            $navbar = "with-options";
-        }
+        $navbar = "logged-in-with-options";
+        if (!(session()->get('user'))) {
+           return redirect('/');
+        } 
         $footer = "true";
-        return view('achievement', compact(
-            'navbar',
-            'footer'
-        ));
-    }
 
-    public function viewLogin()
-    {
-        if (session()->get('user')) {
-            $navbar = "logged-in-with-options";
-        } else {
-            $navbar = "with-options";
-        }
-        $footer = "true";
-        return view('login', compact(
+        return view('achievement', compact(
             'navbar',
             'footer'
         ));
