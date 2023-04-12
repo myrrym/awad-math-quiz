@@ -9,24 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('user_achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('achievement_id');
             $table->timestamp('achieved_at');
-            $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('achievement_id')->references('id')->on('achievements')->onDelete('cascade');
-            $table->unique(['username', 'achievement_id']);
+            $table->unique(['user_id', 'achievement_id']);
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::dropIfExists('user_achievements');
     }
 };
