@@ -3,6 +3,16 @@
 @section('head')
 <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
 <title>Two Section Page</title>
+@php
+$tengames = app('App\Http\Controllers\AchievementController')->getTenGames();
+$twentygames = app('App\Http\Controllers\AchievementController')->getTwentyGames();
+$fiftygames = app('App\Http\Controllers\AchievementController')->getFiftyGames();
+$hundredgames = app('App\Http\Controllers\AchievementController')->getHundredGames();
+$tenscore = app('App\Http\Controllers\AchievementController')->getTenScore();
+$fifteenscore = app('App\Http\Controllers\AchievementController')->getFifteenScore();
+$fullscore = app('App\Http\Controllers\AchievementController')->getFullScore();
+$whatthemeow = app('App\Http\Controllers\AchievementController')->getWhatTheMeow();
+@endphp
 @endsection
 
 @section('content')
@@ -26,54 +36,54 @@
                 let data = [{
                         name: 'cat neck.png',
                         description: 'Create account',
-                        Achieved: 'true'
+                        Achieved: 'true',
                     },
                     {
                         name: 'cat tower.png',
                         description: 'play 100 games',
-                        Achieved: 'true'
+                        Achieved: '{{ $hundredgames }}'
 
                     },
                     {
                         name: 'fish.png',
                         description: 'play 10 games',
-                        Achieved: 'true'
+                        Achieved: '{{ $tengames }}',
 
                     },
                     {
                         name: 'ball.png',
                         description: 'play 20 games',
-                        Achieved: 'true'
+                        Achieved: '{{ $twentygames }}',
 
                     },
                     {
                         name: 'mouse.png',
                         description: 'play 50 games',
-                        Achieved: 'false'
+                        Achieved: '{{ $fiftygames }}'
 
                     },
                     {
                         name: 'rubbing cat.png',
-                        description: 'get a score of 1000 and above',
-                        Achieved: 'true'
+                        description: 'get a score of 15 and above',
+                        Achieved: '$fifteenscore'
 
                     },
                     {
                         name: 'cat comb.png',
-                        description: 'get a score of 500 and above',
-                        Achieved: 'true'
+                        description: 'get a score of 10 and above',
+                        Achieved: '{{$tenscore}}'
 
                     },
                     {
                         name: 'cat tin.png',
-                        description: 'get a quiz 20/20',
-                        Achieved: 'false'
+                        description: 'get full marks!',
+                        Achieved: '{{$fullscore}}'
 
                     },
                     {
                         name: 'bone.png',
-                        description: 'complete one game on what the meow mode',
-                        Achieved: 'true'
+                        description: 'play 1 quiz in what the meow mode',
+                        Achieved: '{{$whatthemeow}}'
 
                     }
                 ];
@@ -81,10 +91,13 @@
                 // get the table element from HTML
                 let table = document.getElementById('myTable');
 
-                // loop through the data and create rows with three columns
+
                 var j_temp = 0;
                 var x_temp = 0;
+                // get the height of the screen
+                var screenHeight = screen.height;
 
+                // loop through the data and create rows with three columns
                 for (var i = 0; i < 3; i++) {
                     var row = table.insertRow();
 
@@ -93,11 +106,10 @@
                         var img = document.createElement('img');
                         img.src = '/assets/img/achievementImg/' + data[j].name;
                         img.alt = data[j].name;
-                        img.width = 150; // set width to 100px
-                        img.height = 150; // set height to 100px
+                        img.width = screenHeight * 0.15; // set width to 100px
+                        img.height = screenHeight * 0.15; // set height to 100px
 
-                        if(data[j].Achieved === 'false')
-                        {
+                        if (data[j].Achieved === 'false') {
                             img.style.opacity = 0.2;
                         }
 
@@ -114,7 +126,7 @@
 
                         if (data[x].Achieved === 'false') {
                             cell.style.opacity = 0.2;
-                         }
+                        }
                     }
 
                     j_temp = j;
@@ -135,26 +147,15 @@
         height: 100%;
     }
 
-   
     .container {
-        height: 100%;
-        max-height: 100%;
+        height: 78vh;
         display: flex;
-        flex-wrap: wrap;
         align-items: stretch;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
-
-    /* horizontal scrollbar for tables if mobile screen */
-    /* .tablemobile {
-        overflow-x: auto;
-        display: block;
-    } */
-
 
     .my-table td,
     .my-table th {
-        border: 1px solid #ddd;
         padding: 8px;
     }
 
@@ -230,42 +231,12 @@
     .main-frame {
         background-color: white;
         height: 100%;
-        /* max-height: 77vh; */
+        width: 90%;
         padding: 30px;
         box-sizing: border-box;
         border-radius: 20px;
         text-align: center;
-        overflow-y: scroll;
-    }
-
-    .label {
-        color: #B6B6B6;
-        margin-top: 30px;
-    }
-
-    .result {
-        font-size: 160%;
-    }
-
-    .profile-picture {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-
-    .picture a {
-        color: #B6B6B6;
-        font-size: 70%;
-    }
-
-    .password {
-        margin-top: 30px;
-    }
-
-    .password a {
-        color: #AC5858;
+        overflow-y: auto;
     }
 </style>
-
 @endsection

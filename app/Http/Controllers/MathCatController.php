@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 class MathCatController extends Controller
 {
-    public function viewHomePage(){
+    public function viewHomePage()
+    {
         $navbar = "with-options";
         $footer = "true";
-        return view('homepage' , compact(
+        return view('homepage', compact(
             'navbar',
             'footer'
         ));
     }
-    
-    public function viewExample(){
+
+    public function viewExample()
+    {
         $navbar = "with-options";
         $footer = "true";
         return view('example', compact(
@@ -24,6 +29,7 @@ class MathCatController extends Controller
         ));
     }
 
+<<<<<<< HEAD
     public function viewQuiz($diff){
         $diff_array = [
             'easy',
@@ -35,15 +41,20 @@ class MathCatController extends Controller
             return abort(404);
         };
 
+=======
+    public function viewQuiz()
+    {
+>>>>>>> cf4595a59bc17d88563718db3dc2946a132de015
         $navbar = "without-options";
         $footer = "true";
         return view('quiz', compact(
             'navbar',
             'footer'
-        ));
+        ),);
     }
 
-    public function viewUser(){
+    public function viewUser()
+    {
         $navbar = "without-options";
         $footer = "true";
         return view('user', compact(
@@ -52,16 +63,19 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewLeaderboard(){
+    public function viewLeaderboard($difficulty)
+    {
         $navbar = "without-options";
         $footer = "true";
-        return view('leaderboard', compact(
-            'navbar',
-            'footer'
-        ));
+        return view(
+            'leaderboard',
+            ['difficulty' => $difficulty],
+            compact('navbar','footer')
+        );
     }
 
-    public function viewPrivacy(){
+    public function viewPrivacy()
+    {
         $navbar = "without-options";
         $footer = "true";
         return view('privacy-policy', compact(
@@ -69,17 +83,21 @@ class MathCatController extends Controller
             'footer'
         ));
     }
-    
-    public function viewHistory(){
+
+    public function viewHistory($difficulty)
+    {
         $navbar = "without-options";
         $footer = "true";
-        return view('history', compact(
-            'navbar',
-            'footer'
-        ));
+        
+        return view(
+            'history',
+            ['difficulty' => $difficulty],
+            compact('navbar','footer')
+        );
     }
 
-    public function viewAchievement(){
+    public function viewAchievement()
+    {
         $navbar = "without-options";
         $footer = "true";
         return view('achievement', compact(
@@ -88,7 +106,8 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewLogin(){
+    public function viewLogin()
+    {
         $navbar = "with-options";
         $footer = "true";
         return view('login', compact(
@@ -96,5 +115,10 @@ class MathCatController extends Controller
             'footer'
         ));
     }
-    
+
+    public function getUser(){
+        $data = User::all()->where('username', 'vWl8XZs0ww')-> first();
+
+        return $data;
+    }
 }

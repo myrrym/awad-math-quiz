@@ -5,6 +5,14 @@
     <title>Two Section Page</title>
 @endsection
 
+@php
+$difficulty = $difficulty ?? 'Easy';
+$activities = app('App\Http\Controllers\ActivityController')->getActivities($difficulty);  
+$bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($difficulty);
+$totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($difficulty);
+$currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($difficulty);
+@endphp
+
 @section('content')
         <div class="container">
             <div class="left-section">
@@ -20,51 +28,51 @@
 
             <div class="right-section">
                 <div class="top-frame">
-                    <a href="#">Easy &nbsp;</a>
+                    <a href="Easy">Easy &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="#">Medium &nbsp;</a>
+                    <a href="Medium">Medium &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="#">Hard &nbsp;</a>
+                    <a href="Hard">Hard &nbsp;</a>
                 </div>
                 <div class="top-frame">
-                    <a href="#">What The Meow? &nbsp;</a>
+                    <a href="What the meow">What The Meow? &nbsp;</a>
                 </div>
                 <div class="right-frame">
+                    
                     <div class="title">best score</div>
-                    <div class='info'>9999</div>
-                    <div class='date'>1/2/2023</div>
+                    <div class='info'>{{$bestActivity['score']}}</div>
+                    <div class='date'>{{$bestActivity['time']}}</div>
+                    <div class='date'>{{$bestActivity['created_at']}}</div>
                 </div>
                 <div class="right-frame">
                     <div class="title">current rank</div>
-                    <div class='info'>1234</div>
+                    <div class='info'>{{$currentRank}}</div>
                 </div>
                 <div class="right-frame">
                     <div class="title">tests completed</div>
-                    <div class='info'>111</div>
+                    <div class='info'>{{$totalTest}}</div>
                 </div>
                 <div class="bottom-frame">
-                    {{-- 
-                        code from chatGPT, cant test cause no data
-                    <table>
+                    <table class="activity-table">
                         <thead>
                           <tr>
-                            <th>Rank</th>
-                            <th>Name</th>
                             <th>Score</th>
+                            <th>Time</th>
+                            <th>Achieved at</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($leaderboard as $player)
+                          @foreach ($activities as $activity)
                             <tr>
-                              <td>{{ $loop->iteration }}</td>
-                              <td>{{ $player->name }}</td>
-                              <td>{{ $player->score }}</td>
+                              <td>{{$activity['score']}}</td>
+                              <td>{{$activity['time']}}</td>
+                              <td class="activity-table-time">{{$activity['created_at']}}</td>
                             </tr>
                           @endforeach
                         </tbody>
-                      </table> --}}
+                      </table> 
                 </div>
             </div>
         </div>
@@ -78,12 +86,10 @@
         }
 
         .container {
-            height: 578px;
-            border: 1px solid black;
+            height: 78vh;
             display: flex;
-            flex-wrap: wrap;
             align-items: stretch;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         .left-section {
@@ -96,7 +102,15 @@
             margin-left: 1%;
             height: 95%;
             flex-direction: column;
-            overflow: hidden;
+        }
+
+        .activity-table{
+            width: 100%;
+        }
+
+        .activity-table td{
+            font-size: 15px;
+            width: 41%;
         }
 
         .left-frame {
@@ -140,6 +154,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            
         }
 
         .middle-section {
@@ -153,6 +168,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            overflow-y: auto;
         }
 
         .top-frame {
@@ -198,6 +214,9 @@
             padding: 10px;
             box-sizing: border-box;
             border-radius: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+
         }
 
         .title{

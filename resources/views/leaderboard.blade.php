@@ -4,72 +4,88 @@
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
     <img class="pageLoader" src="/assets/img/meow-loader.gif" alt="">
+    @php
+        $difficulty = $difficulty ?? 'Easy';
+        $activities = app('App\Http\Controllers\LeaderboardController')->getBestActivityPerUser($difficulty);
+        $position = 1;
+    @endphp
 @endsection
 
 @section('content')
-        <div class="container">
-            <div class="left-section">
-                <div class="top-section left-frame"></div>
-                <div class="mid-section left-frame">
-                    <a href="#">Easy &nbsp;</a>
-                    <a href="#">Medium &nbsp;</a>
-                    <a href="#">Hard &nbsp;</a>
-                    <a href="#">What The Meow? &nbsp;</a>
-                </div>
-                <div class="bottom-section left-frame"></div>
+    <div class="container">
+        <div class="left-section">
+            <div class="top-section left-frame"></div>
+            <div class="mid-section left-frame">
+                <a href="Easy" class="{{ $difficulty == 'Easy' ? 'active' : '' }}">Easy &nbsp;</a>
+                <a href="Medium" class="{{ $difficulty == 'Medium' ? 'active' : '' }}">Medium &nbsp;</a>
+                <a href="Hard" class="{{ $difficulty == 'Hard' ? 'active' : '' }}">Hard &nbsp;</a>
+                <a href="What the meow" class="{{ $difficulty == 'What the meow' ? 'active' : '' }}">What The Meow?
+                    &nbsp;</a>
             </div>
-            <div class="middle-section"></div>
+            <div class="bottom-section left-frame"></div>
+        </div>
+        <div class="middle-section"></div>
 
-            <div class="right-section">
-                <div class="right-frame">
-                    <div class="second">2nd</div>
-                    <div class='player'>player2</div>
-                    <div class='time'>2:00:00</div>
-                </div>
-                <div class="right-frame">
-                    <div class="first">1st</div>
-                    <div class='player'>player1</div>
-                    <div class='time'>1:00:00</div>
-                </div>
-                <div class="right-frame">
-                    <div class="third">3rd</div>
-                    <div class='player'>player3</div>
-                    <div class='time'>3:00:00</div>
-                </div>
-                <div class="bottom-frame">
-                    {{-- 
-                        code from chatGPT, cant test cause no data
-                    <table>
-                        <thead>
-                          <tr>
-                            <th>Rank</th>
-                            <th>Name</th>
-                            <th>Score</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($leaderboard as $player)
+        <div class="right-section">
+            @foreach ($activities as $activity)
+                @if ($position == 1)
+                    <div class="right-frame">
+                        <div class="first">1st</div>
+                        <div class="player">{{ $activity['username'] }}</div>
+                        <div class="score">{{ $activity['score'] }}</div>
+                        <div class="time">{{ $activity['time'] }}</div>
+                    </div>
+                @elseif ($position == 2)
+                    <div class="right-frame">
+                        <div class="second">2nd</div>
+                        <div class="player">{{ $activity['username'] }}</div>
+                        <div class="score">{{ $activity['score'] }}</div>
+                        <div class="time">{{ $activity['time'] }}</div>
+                    </div>
+                @elseif ($position == 3)
+                    <div class="right-frame">
+                        <div class="third">3rd</div>
+                        <div class="player">{{ $activity['username'] }}</div>
+                        <div class="score">{{ $activity['score'] }}</div>
+                        <div class="time">{{ $activity['time'] }}</div>
+                    </div>
+                @endif
+                @php $position++ @endphp
+            @endforeach
+            <div class="bottom-frame">
+                <table>
+                    <tr>
+                        <td class="position">Position</td>
+                        <td>Username</td>
+                        <td>Score</td>
+                        <td>Time(s)</td>
+                    </tr>
+                    @php $position = 1 @endphp
+                    @foreach ($activities as $activity)
+                        @if ($position > 3)
                             <tr>
-                              <td>{{ $loop->iteration }}</td>
-                              <td>{{ $player->name }}</td>
-                              <td>{{ $player->score }}</td>
+                                <td class="position">{{ $position }}</td>
+                                <td>{{ $activity['username'] }}</td>
+                                <td>{{ $activity['score'] }}</td>
+                                <td>{{ $activity['time'] }}</td>
                             </tr>
-                          @endforeach
-                        </tbody>
-                      </table> --}}
-                </div>
+                        @endif
+                        @php $position++ @endphp
+                    @endforeach
+                </table>
             </div>
         </div>
+    </div>
 @endsection
 
 @section('script')
     <!-- This is where your js/other scripts code goes -->
     <script>
-        $(window).ready(function(){
+        $(window).ready(function() {
             // $(function(){
-                setTimeout(() => {
-                    $(".pageLoader").fadeOut(150)
-                }, 1000);
+            setTimeout(() => {
+                $(".pageLoader").fadeOut(150)
+            }, 1000);
             // })
             // $('.pageLoader').fadeOut(500);
         });
@@ -80,12 +96,10 @@
         }
 
         .container {
-            height: 578px;
-            border: 1px solid black;
+            height: 78vh;
             display: flex;
-            flex-wrap: wrap;
             align-items: stretch;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         .left-section {
@@ -119,8 +133,7 @@
         }
 
         .left-frame a:hover {
-            background-color: #FEAE36;
-            color: white;
+            background-color: #FFD390;
         }
 
         .top-section {
@@ -135,6 +148,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .mid-section a.active {
+            background-color: #FEAE36;
+            color: white;
+            font-weight: bold;
         }
 
         .bottom-section {
@@ -159,43 +178,60 @@
 
         .right-frame {
             background-color: white;
-            height: 40%;
+            height: 22vh;
             width: calc(33.3% - 10px);
             margin-bottom: 10px;
             padding: 10px;
             box-sizing: border-box;
             border-radius: 20px;
-            text-align:center;
+            text-align: center;
         }
 
         .bottom-frame {
             background-color: white;
-            height: 54%;
+            height: 50vh;
             width: 100%;
             margin-top: 10px;
             padding: 10px;
             box-sizing: border-box;
             border-radius: 20px;
+            overflow-y: auto;
         }
 
-        .first{
-            font-size:400%;
+        .bottom-frame table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
         }
 
-        .second{
+        .bottom-frame td {
+            padding: 5px;
+        }
+
+        .position {
+            width: 30px;
+        }
+
+        .first {
+            font-size: 300%;
+        }
+
+        .second {
             padding-top: 5%;
-            font-size:300%;
-            margin-bottom: 5%;
+            font-size: 250%;
+
         }
 
-        .third{
+        .third {
             padding-top: 10%;
-            font-size:200%;
-            margin-bottom: 8%;
+            font-size: 200%;
+
         }
 
-        .player, .time{
-            font-size:130%;
+        .player,
+        .time,
+        .score {
+            font-size: 100%;
         }
     </style>
 @endsection
