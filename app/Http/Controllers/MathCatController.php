@@ -11,10 +11,16 @@ class MathCatController extends Controller
 {
     public function viewHomePage(Request $request)
     {
-        $navbar = "with-options";
+        // $navbar = "with-options";
         $footer = "true";
         $user_id = $request->session()->get('user_id');
         $user = User::find($user_id);
+        
+        if($user="true"){
+            $navbar = "logged-in-with-options";
+        }else{
+            $navbar = "with-options";
+        }
 
         return view(
             'homepage',
