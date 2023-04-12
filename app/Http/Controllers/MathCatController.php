@@ -15,6 +15,15 @@ class MathCatController extends Controller
         $footer = "true";
         $user_id = $request->session()->get('user_id');
         $user = User::find($user_id);
+<<<<<<< HEAD
+=======
+        
+        if($user){
+            $navbar = "logged-in-with-options";
+        }else{
+            $navbar = "with-options";
+        }
+>>>>>>> ad1cbd1048490ae9907be53106419aa1870c543f
 
         return view(
             'homepage',
@@ -52,7 +61,55 @@ class MathCatController extends Controller
 
         // generate q based on difficulty
         if($diff == "easy"){
+<<<<<<< HEAD
             
+=======
+            function calc($a,$sym,$b){
+                switch($sym) {
+                    case '+': return $a + $b;
+                    case '-': return $a - $b;
+                    case '*': return $a * $b;
+                    case '/': return $a / $b;
+                }
+            }
+
+            for($i=0; $i<20; $i++){
+                $qNum[$i] = $i+1;
+                $num1[$i] = rand(0,9);
+                $sym1[$i] = ['+','-','*','/'][rand(0,2)];
+                $num2[$i] = rand(0,9);
+    
+                $question[$i] = $num1[$i].' '.$sym1[$i].' '.$num2[$i];
+
+                $answerCorrect[$i] = [calc($num1[$i],$sym1[$i],$num2[$i]), 'correct'];
+                
+                do{
+                    $answerWrong1[$i] = [rand(-20,20), 'wrong'];
+                    $answerWrong2[$i] = [rand(-20,20), 'wrong'];
+                    $answerWrong3[$i] = [rand(-20,20), 'wrong'];
+                }while(
+                    $answerWrong1[$i][0] == $answerCorrect[$i][0]||
+                    $answerWrong2[$i][0] == $answerCorrect[$i][0]||
+                    $answerWrong3[$i][0] == $answerCorrect[$i][0]
+                );
+    
+                $answers[$i] = [$answerCorrect[$i], $answerWrong1[$i], $answerWrong2[$i], $answerWrong3[$i]];
+    
+                $shuffledAnswers[$i] = $answers[$i];
+                shuffle($shuffledAnswers[$i]);
+    
+                $quiz[$i] = [$qNum[$i], $question[$i], $shuffledAnswers[$i]];
+            }
+>>>>>>> ad1cbd1048490ae9907be53106419aa1870c543f
+        }
+        else if($diff == "medium"){
+            // here
+        }
+        else if($diff == "hard"){
+            // here
+        }
+        else if($diff == "whatTheMeow"){
+            // here
         }
 
         return view('quiz', compact(

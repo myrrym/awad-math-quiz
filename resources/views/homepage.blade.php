@@ -11,7 +11,11 @@
     <div class="homepage" >
         <!-- This is where your content goes -->
         <div class="homeContent">
+        @if(session()->get('user'))
             <p class="meow-meow"> Meow Meow, {{ $user['username'] }}</p>   
+        @else
+            <p class="meow-meow"> Meow Meow </p>
+        @endif
             <p class="homeWord"> Test your math skill, <br> Fight for the top!</p>
                 <div class="difficulty">
                     <a class="js-card card-diff easy" data-diff="easy"><img class="easy-pic" src="/assets/img/easy.png" alt=""><br>EASY</a>
