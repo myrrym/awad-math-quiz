@@ -43,6 +43,10 @@ class MathCatController extends Controller
     }
 
     public function viewQuiz($diff){
+        // task1: integrate with session
+        // task2: medium
+        // task3: hard
+        // task4: wtm
         $diff_array = [
             'easy',
             'medium',
@@ -108,7 +112,18 @@ class MathCatController extends Controller
 
         return view('quiz', compact(
             'navbar',
-            'footer'
+            'footer',
+            'quiz',
+        ),);
+    }
+
+    public function viewQuizResults(){
+        $navbar = "with-options";
+        $footer = "true";
+
+        return view('quiz-results', compact(
+            'navbar',
+            'footer',
         ),);
     }
 

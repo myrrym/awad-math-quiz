@@ -55,16 +55,12 @@
             move on to next q
             
             ### task 2: repeat 20 times
-
-            ### task 3: results page
-
-            ### task 4: click exit ask to confirm
         -->
 
     </div>
 
-    <div class="block-exit-card-bg"></div>
-    <div class="block-exit-card">
+    <div id="js-card-bg" class="block-exit-card-bg" style="display: none;"></div>
+    <div id="js-card" class="block-exit-card" style="display: none;">
         <div class="row">
             <div class="offset-3 col-6">
                 <div class="row">
@@ -76,10 +72,10 @@
                 <div class="block-exit-card-btn-group">
                     <div class="row">
                         <div class="col-6">
-                            <div class="block-exit-card-btn block-exit-card-btn-no">Wait neo! D:</div>
+                            <div id="js-card-no" class="block-exit-card-btn block-exit-card-btn-no">Wait neo! D:</div>
                         </div>
                         <div class="col-6">
-                            <div class="block-exit-card-btn block-exit-card-btn-yes">I dont care the meow, quit anyway</div>
+                            <div id="js-card-yes" class="block-exit-card-btn block-exit-card-btn-yes">I dont care the meow, quit anyway</div>
                         </div>
                     </div>
                 </div>
@@ -91,17 +87,11 @@
 
 @section("script")
     <script>
-        $(window).ready(function() {
-            // $(function(){
+        $(document).ready(function() {
+            // loading
             setTimeout(() => {
                 $(".pageLoader").fadeOut(150)
             }, 1000);
-            // })
-            // $('.pageLoader').fadeOut(500);
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
             
             // timer
             var time = new Date;
@@ -111,7 +101,21 @@
             }, 1000);
 
             // exit card
+            $('#js-exit').click(function(){
+                $('#js-card-bg').fadeIn();
+                $('#js-card').fadeIn();
+            });
 
+            // exit card - no
+            $('#js-card-no').click(function(){
+                $('#js-card-bg').fadeOut();
+                $('#js-card').fadeOut();
+            });
+
+            // exit card - yes
+            $('#js-card-yes').click(function(){
+                window.location = '/home';
+            });
 
         });
     </script>

@@ -48,11 +48,11 @@ body{
 
 .nav-link-ext:not(.navbar-brand):hover{
     background-color: #FEAE36;
-
 }
 
 .nav-link-ext{
     text-decoration: underline !important;
+    cursor: pointer;
 }
 
 /* .container-fluid{
@@ -206,6 +206,34 @@ body{
 }
 .block-exit-card-btn-yes{
     background-color: #FE5A36;
+}
+
+/* quiz-results */
+.block-quiz-results{
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.block-congrats-p-congrats, .block-congrats-p-score, .block-reward-p-reward, .block-reward-p-time{
+    font-family: 'AdventPro-Bold';
+    font-size: 30pt;
+    font-weight: 900;
+}
+.block-congrats-p-score{
+    font-size: 35pt;
+}
+.block-reward-p-time{
+    font-size: 16pt;
+}
+.block-reward-p-time-taken{
+    font-family: 'AdventPro-Bold';
+    color: #5A5A5A;
+}
+.block-reward{
+    padding-top: 1rem;
 }
 
 .homepage{
