@@ -174,12 +174,21 @@ body{
     justify-content: center;
 }
 
+.meow-meow{
+    text-align: center;
+    position: absolute;
+    margin-top: 10px;
+    font-size: 30px;
+    color: black;
+    font-weight: bolder;
+}
+
 .homeWord{
     text-align: center;
     position: absolute;
-    margin-top: 20px;
-    font-size: 40px;
-    color: gray;
+    margin-top: 60px;
+    font-size: 35px;
+    color: rgb(95, 95, 95);
     font-weight: bolder;
 }
 

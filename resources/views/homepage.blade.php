@@ -2,12 +2,16 @@
 
 @section("head")
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
+    @php
+        $user = session('user');
+    @endphp
 @endsection
 
 @section("content")
     <div class="homepage" >
         <!-- This is where your content goes -->
         <div class="homeContent">
+            <p class="meow-meow"> Meow Meow, {{ $user['username'] }}</p>   
             <p class="homeWord"> Test your math skill, <br> Fight for the top!</p>
                 <div class="difficulty">
                     <a class="js-card card-diff easy" data-diff="easy"><img class="easy-pic" src="/assets/img/easy.png" alt=""><br>EASY</a>
