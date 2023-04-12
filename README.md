@@ -95,6 +95,14 @@ for the jwt installation
     php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
     php artisan jwt:secret
     
+for password reset
+    composer require laravel/ui
+    php artisan ui bootstrap --auth
+    IMPORTANT!!!change the vita version from v4.0.0 to v3.0.0!!!IMPORTANT
+    npm install
+    npm run dev
+    
+    
 for consuming api
     npm install axios
 
