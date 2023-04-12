@@ -336,6 +336,14 @@ body{
     padding: 300px 700px 300px 700px;
 }
 
+.logout-button{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border:none;
+    outline: none;
+    text-decoration: underline;
+}
+
 
 
 
