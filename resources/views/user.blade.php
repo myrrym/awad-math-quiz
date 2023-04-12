@@ -4,7 +4,7 @@
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
     @php
-        $user = app('App\Http\Controllers\MathCatController')->getUser();
+        $user = session('user');
     @endphp
 @endsection
 
@@ -27,7 +27,7 @@
                 <div class="change"><a href="">change profile picture</a></div>
 
 
-                <button id="openModalBtn">Change Profile Picture</button>
+                <button id="openModalBtn">Change Profile Picture (not working)</button>
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -52,13 +52,13 @@
 
 
                 <div class="label">username</div>
-                <div class="result">{{$user['username']}}</div>
+                <div class="result">{{ $user['username'] }}</div>
                 <div class="label">email</div>
-                <div class="result">{{$user['email']}}</div>
+                <div class="result">{{ $user['email'] }}</div>
                 <div class="label">joined since</div>
-                <div class="result">{{$user['created_at']->format('Y-m-d')}}</div>
+                <div class="result">{{ $user['created_at']->format('Y-m-d') }}</div>
                 <div class="password"><a href="" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">change
-                        password</a></div>
+                        password (not working yet)</a></div>
             </div>
         </div>
     </div>
@@ -190,9 +190,9 @@
 
 
         /*
-            .modal {
-                display: none;
-                /* Hidden by default */
+                .modal {
+                    display: none;
+                    /* Hidden by default */
         position: fixed;
         /* Stay in place */
         z-index: 1;

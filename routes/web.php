@@ -19,21 +19,31 @@ use App\Http\Controllers\ActivityController;
 //     return view('welcome');
 // });
 
+
+Route::get('/', [MathCatController::class, 'viewHomePage']);
+Route::get('/home', [MathCatController::class, 'viewHomePage']);
 Route::get('/example', [MathCatController::class, 'viewExample']);
 Route::get('/quiz', [MathCatController::class, 'viewQuiz']);
-Route::get('/home', [MathCatController::class, 'viewHomePage']);
 Route::get('/user', [MathCatController::class, 'viewUser']);
-Route::get('/leaderboard', function(){
+Route::get('/leaderboard', function () {
     return redirect('/leaderboard/Easy');
 });
 Route::get('/leaderboard/{difficulty}', [MathCatController::class, 'viewLeaderboard']);
 Route::get('user/{username}', [UserController::class, 'loadView']);
 Route::get('/privacy', [MathCatController::class, 'viewPrivacy']);
-Route::get('/history', function(){
+Route::get('/history', function () {
     return redirect('/history/Easy');
 });
 Route::get('/history/{difficulty?}', [MathCatController::class, 'viewHistory']);
 Route::get('/achievement', [MathCatController::class, 'viewAchievement']);
 
-Route::get('/login', [MathCatController::class, 'viewLogin']);
-Route::get('/', [MathCatController::class, 'viewHomePage']);
+
+Route::get('logout', function () {
+    if (session()->has('user')) {
+        session()->pull('user');
+    }
+    return redirect('/home');
+});
+
+
+

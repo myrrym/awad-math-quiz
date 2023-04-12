@@ -9,14 +9,21 @@ use App\Models\User;
 
 class MathCatController extends Controller
 {
-    public function viewHomePage()
+    public function viewHomePage(Request $request)
     {
         $navbar = "with-options";
         $footer = "true";
-        return view('homepage', compact(
-            'navbar',
-            'footer'
-        ));
+        $user_id = $request->session()->get('user_id');
+        $user = User::find($user_id);
+
+        return view(
+            'homepage',
+            ['user' => $user],
+            compact(
+                'navbar',
+                'footer'
+            )
+        );
     }
 
     public function viewExample()
@@ -56,7 +63,7 @@ class MathCatController extends Controller
         return view(
             'leaderboard',
             ['difficulty' => $difficulty],
-            compact('navbar','footer')
+            compact('navbar', 'footer')
         );
     }
 
@@ -74,11 +81,11 @@ class MathCatController extends Controller
     {
         $navbar = "without-options";
         $footer = "true";
-        
+
         return view(
             'history',
             ['difficulty' => $difficulty],
-            compact('navbar','footer')
+            compact('navbar', 'footer')
         );
     }
 
@@ -100,11 +107,5 @@ class MathCatController extends Controller
             'navbar',
             'footer'
         ));
-    }
-
-    public function getUser(){
-        $data = User::all()->where('username', 'vWl8XZs0ww')-> first();
-
-        return $data;
     }
 }

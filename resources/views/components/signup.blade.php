@@ -24,7 +24,7 @@
                             <input type="password" class="form-control" name="password" id="password">
                         </div>
                         <div class="mb-3">
-                            <label for="password_confirmation" class="form-label">Password</label>
+                            <label for="password_confirmation" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

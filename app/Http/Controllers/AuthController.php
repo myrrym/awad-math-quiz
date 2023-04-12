@@ -25,12 +25,11 @@ class AuthController extends Controller
             return response()->json(['error' => 'Invalid username or password'], 401);
         }
 
-        // Generate an API token for the authenticated user
-        $token = $user->createToken('access-token')->plainTextToken;
+        //initiate session
+        $request->session()->put('user', $user);
 
-        // Return the token in the response
         // return response()->json(['message' => 'User successfully registered'], 201);
-        return redirect("/home");
+        return redirect("/");
 
     }
 
@@ -48,15 +47,13 @@ class AuthController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'picture' => 'cat1.jpg',
         ]);
 
-        // Generate an API token for the registered user
-        $token = $user->createToken('access-token')->plainTextToken;
 
         // Return the token in the response
-        // return response()->json(['message' => 'User successfully registered'], 201);
+        //return response()->json(['message' => 'User successfully registered'], 201);
         return redirect("/home");
-
     }
 
     public function changePassword(Request $request)
@@ -82,15 +79,15 @@ class AuthController extends Controller
         return response()->json(['message' => 'Password updated successfully'], 200);
     }
 
-    public function profile(Request $request)
-    {
-        return response()->json($request->user(), 200);
-    }
+    // public function profile(Request $request)
+    // {
+    //     return response()->json($request->user(), 200);
+    // }
 
     // User logout
     public function logout(Request $request)
     {
-        $request->user()->tokens()->delete();
-        return response()->json(['message' => 'Logged out successfully'], 200);
+        $request->session()->forget('user');
+        return redirect('/home');
     }
 }

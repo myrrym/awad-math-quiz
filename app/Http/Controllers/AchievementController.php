@@ -4,48 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Activity;
+use App\Models\Achievement;
+
 
 class AchievementController extends Controller
 {
-    function getTenGames()
+
+    
+    function getTenGames($username)
     {
-        $total = count(Activity::where('username', 'vWl8XZs0ww')->get());
+        $total = count(Achievement::where('username', $username)->get());
         if ($total >= 10)
             return 'true';
         else
             return 'false';
     }
 
-    function getTwentyGames()
+    function getTwentyGames($username)
     {
-        $total = count(Activity::where('username', 'vWl8XZs0ww')->get());
+        $total = count(Activity::where('username', $username)->get());
         if ($total >= 20)
             return 'true';
         else
             return 'false';
     }
 
-    function getFiftyGames()
+    function getFiftyGames($username)
     {
-        $total = count(Activity::where('username', 'vWl8XZs0ww')->get());
+        $total = count(Activity::where('username', $username)->get());
         if ($total >= 50)
             return 'true';
         else
             return 'false';
     }
 
-    function getHundredGames()
+    function getHundredGames($username)
     {
-        $total = count(Activity::where('username', 'vWl8XZs0ww')->get());
+        $total = count(Activity::where('username', $username)->get());
         if ($total >= 100)
             return 'true';
         else
             return 'false';
     }
 
-    function getTenScore()
+    function getTenScore($username)
     {
-        $data = Activity::where('username', 'vWl8XZs0ww')->get();
+        $data = Activity::where('username', $username)->get();
         $maxScoreRecord = $data->where('score', $data->max('score'))->first();
         if ($maxScoreRecord->score >= 10)
             return 'true';
@@ -53,9 +57,9 @@ class AchievementController extends Controller
             return 'false';
     }
 
-    function getFifteenScore()
+    function getFifteenScore($username)
     {
-        $data = Activity::where('username', 'vWl8XZs0ww')->get();
+        $data = Activity::where('username', $username)->get();
         $maxScoreRecord = $data->where('score', $data->max('score'))->first();
         if ($maxScoreRecord->score >= 15)
             return 'true';
@@ -63,9 +67,9 @@ class AchievementController extends Controller
             return 'false';
     }
 
-    function getFullScore()
+    function getFullScore($username)
     {
-        $data = Activity::where('username', 'vWl8XZs0ww')->get();
+        $data = Activity::where('username', $username)->get();
         $maxScoreRecord = $data->where('score', $data->max('score'))->first();
         if ($maxScoreRecord->score >= 20)
             return 'true';
@@ -73,9 +77,9 @@ class AchievementController extends Controller
             return 'false';
     }
 
-    function getWhatTheMeow()
+    function getWhatTheMeow($username)
     {
-        $data = Activity::where('username', 'vWl8XZs0ww')
+        $data = Activity::where('username', $username)
             ->where('difficulty', 'What the meow')
             ->get();
 
