@@ -51,7 +51,7 @@ class AchievementController extends Controller
     {
         $data = Activity::where('username', $username)->get();
         $maxScoreRecord = $data->where('score', $data->max('score'))->first();
-        if ($maxScoreRecord->score >= 10)
+        if (isset($maxScoreRecord) && $maxScoreRecord->score >= 10)
             return 'true';
         else
             return 'false';
@@ -61,7 +61,7 @@ class AchievementController extends Controller
     {
         $data = Activity::where('username', $username)->get();
         $maxScoreRecord = $data->where('score', $data->max('score'))->first();
-        if ($maxScoreRecord->score >= 15)
+        if (isset($maxScoreRecord) && $maxScoreRecord->score >= 15)
             return 'true';
         else
             return 'false';
@@ -71,7 +71,7 @@ class AchievementController extends Controller
     {
         $data = Activity::where('username', $username)->get();
         $maxScoreRecord = $data->where('score', $data->max('score'))->first();
-        if ($maxScoreRecord->score >= 20)
+        if (isset($maxScoreRecord) && $maxScoreRecord->score >= 20)
             return 'true';
         else
             return 'false';

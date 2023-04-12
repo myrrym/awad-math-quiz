@@ -66,7 +66,7 @@
                         {
                             name: 'rubbing cat.png',
                             description: 'get a score of 15 and above',
-                            Achieved: '$fifteenscore'
+                            Achieved: '{{ $fifteenscore }}'
 
                         },
                         {
