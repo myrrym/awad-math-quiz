@@ -59,7 +59,7 @@
                 var val = $(this).data('diff');
                 
                 if (val != undefined && val != null) {
-                    window.location = '/quiz?diff=' + val;
+                    window.location = '/quiz/' + val;
                 }
             });
 

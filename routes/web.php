@@ -19,7 +19,7 @@ use App\Http\Controllers\MathCatController;
 // });
 
 Route::get('/example', [MathCatController::class, 'viewExample']);
-Route::get('/quiz', [MathCatController::class, 'viewQuiz']);
+Route::get('/quiz/{diff}', [MathCatController::class, 'viewQuiz']);
 Route::get('/home', [MathCatController::class, 'viewHomePage']);
 Route::get('/user', [MathCatController::class, 'viewUser']);
 Route::get('/leaderboard', [MathCatController::class, 'viewLeaderboard']);
