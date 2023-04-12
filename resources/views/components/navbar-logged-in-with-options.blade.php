@@ -17,7 +17,7 @@
             <!-- login trigger modal -->
             <div>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    Login
+                    Logout
                 </button>
             </div>
         </div>
