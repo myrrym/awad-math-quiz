@@ -6,76 +6,78 @@
 @endsection
 
 @php
-$difficulty = $difficulty ?? 'Easy';
-$activities = app('App\Http\Controllers\ActivityController')->getActivities($difficulty);  
-$bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($difficulty);
-$totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($difficulty);
-$currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($difficulty);
+    $user = session('user');
+    $difficulty = $difficulty ?? 'Easy';
+    $activities = app('App\Http\Controllers\ActivityController')->getActivities($user['username'], $difficulty);
+    $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($user['username'], $difficulty);
+    $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($user['username'], $difficulty);
+    $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($user['username'], $difficulty);
+    
 @endphp
 
 @section('content')
-        <div class="container">
-            <div class="left-section">
-                <div class="top-section left-frame"></div>
-                <div class="mid-section left-frame">
-                    <a href="/user">Profile &nbsp;</a>
-                    <a href="/history">History &nbsp;</a>
-                    <a href="/achievement">Achievement &nbsp;</a>
-                </div>
-                <div class="bottom-section left-frame"></div>
+    <div class="container">
+        <div class="left-section">
+            <div class="top-section left-frame"></div>
+            <div class="mid-section left-frame">
+                <a href="/user">Profile &nbsp;</a>
+                <a href="/history">History &nbsp;</a>
+                <a href="/achievement">Achievement &nbsp;</a>
             </div>
-            <div class="middle-section"></div>
+            <div class="bottom-section left-frame"></div>
+        </div>
+        <div class="middle-section"></div>
 
-            <div class="right-section">
-                <div class="top-frame">
-                    <a href="Easy">Easy &nbsp;</a>
-                </div>
-                <div class="top-frame">
-                    <a href="Medium">Medium &nbsp;</a>
-                </div>
-                <div class="top-frame">
-                    <a href="Hard">Hard &nbsp;</a>
-                </div>
-                <div class="top-frame">
-                    <a href="What the meow">What The Meow? &nbsp;</a>
-                </div>
-                <div class="right-frame">
-                    
-                    <div class="title">best score</div>
-                    <div class='info'>{{$bestActivity['score']}}</div>
-                    <div class='date'>{{$bestActivity['time']}}</div>
-                    <div class='date'>{{$bestActivity['created_at']}}</div>
-                </div>
-                <div class="right-frame">
-                    <div class="title">current rank</div>
-                    <div class='info'>{{$currentRank}}</div>
-                </div>
-                <div class="right-frame">
-                    <div class="title">tests completed</div>
-                    <div class='info'>{{$totalTest}}</div>
-                </div>
-                <div class="bottom-frame">
-                    <table class="activity-table">
-                        <thead>
-                          <tr>
+        <div class="right-section">
+            <div class="top-frame">
+                <a href="Easy">Easy &nbsp;</a>
+            </div>
+            <div class="top-frame">
+                <a href="Medium">Medium &nbsp;</a>
+            </div>
+            <div class="top-frame">
+                <a href="Hard">Hard &nbsp;</a>
+            </div>
+            <div class="top-frame">
+                <a href="What the meow">What The Meow? &nbsp;</a>
+            </div>
+            <div class="right-frame">
+
+                <div class="title">best score</div>
+                <div class='info'>{{ $bestActivity['score'] }}</div>
+                <div class='date'>{{ $bestActivity['time'] }}</div>
+                <div class='date'>{{ $bestActivity['created_at'] }}</div>
+            </div>
+            <div class="right-frame">
+                <div class="title">current rank</div>
+                <div class='info'>{{ $currentRank }}</div>
+            </div>
+            <div class="right-frame">
+                <div class="title">tests completed</div>
+                <div class='info'>{{ $totalTest }}</div>
+            </div>
+            <div class="bottom-frame">
+                <table class="activity-table">
+                    <thead>
+                        <tr>
                             <th>Score</th>
                             <th>Time</th>
                             <th>Achieved at</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($activities as $activity)
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($activities as $activity)
                             <tr>
-                              <td>{{$activity['score']}}</td>
-                              <td>{{$activity['time']}}</td>
-                              <td class="activity-table-time">{{$activity['created_at']}}</td>
+                                <td>{{ $activity['score'] }}</td>
+                                <td>{{ $activity['time'] }}</td>
+                                <td class="activity-table-time">{{ $activity['created_at'] }}</td>
                             </tr>
-                          @endforeach
-                        </tbody>
-                      </table> 
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 @endsection
 
 @section('script')
@@ -104,11 +106,11 @@ $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($d
             flex-direction: column;
         }
 
-        .activity-table{
+        .activity-table {
             width: 100%;
         }
 
-        .activity-table td{
+        .activity-table td {
             font-size: 15px;
             width: 41%;
         }
@@ -154,7 +156,7 @@ $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($d
             display: flex;
             justify-content: center;
             align-items: center;
-            
+
         }
 
         .middle-section {
@@ -190,7 +192,8 @@ $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($d
             color: black;
         }
 
-        .top-frame:hover,.top-frame:hover a{
+        .top-frame:hover,
+        .top-frame:hover a {
             background-color: #FEAE36;
             color: white;
         }
@@ -203,7 +206,7 @@ $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($d
             padding: 10px;
             box-sizing: border-box;
             border-radius: 20px;
-            text-align:center;
+            text-align: center;
         }
 
         .bottom-frame {
@@ -219,19 +222,19 @@ $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($d
 
         }
 
-        .title{
-            font-size:150%;
+        .title {
+            font-size: 150%;
             color: #9E9E9E;
-            margin-bottom:10%;
+            margin-bottom: 10%;
         }
 
-        .info{
-            font-size:150%;
-            font-weight:900;
+        .info {
+            font-size: 150%;
+            font-weight: 900;
         }
 
         .date {
-            font-weight:normal;
+            font-weight: normal;
         }
     </style>
 @endsection
