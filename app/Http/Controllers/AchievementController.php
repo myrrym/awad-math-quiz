@@ -9,8 +9,6 @@ use App\Models\Achievement;
 
 class AchievementController extends Controller
 {
-
-    
     function getTenGames($username)
     {
         $total = count(Achievement::where('username', $username)->get());

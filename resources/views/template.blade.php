@@ -20,8 +20,10 @@
 </head>
 <body>
 
-    @if ($navbar == 'without-options')
+    @if($navbar == 'without-options')
         <x-navbar-without-options/>
+    @elseif($navbar == 'logged-in-with-options')
+        <x-navbar-logged-in-with-options/>
     @else
         <x-navbar-with-options/>
     @endif

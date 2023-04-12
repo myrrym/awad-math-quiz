@@ -33,7 +33,11 @@ body{
 }
 
 /* navbar */
+.navbar{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 .parent-navbar-brand{
+    
 }
 .navbar-brand{
     text-align: center;
@@ -72,6 +76,7 @@ body{
     text-align: right;
     padding: 3px 16px;
     font-size: 8pt;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* quiz */
@@ -372,6 +377,14 @@ body{
     position: fixed;
     margin: 0 auto;
     padding: 300px 700px 300px 700px;
+}
+
+.logout-button{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border:none;
+    outline: none;
+    text-decoration: underline;
 }
 
 
