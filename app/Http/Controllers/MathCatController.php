@@ -11,14 +11,12 @@ class MathCatController extends Controller
 {
     public function viewHomePage(Request $request)
     {
-        $navbar = "with-options";
         $footer = "true";
-        $user_id = $request->session()->get('user_id');
-        $user = User::find($user_id);
-        
-        if($user){
+        $user = session('user');
+
+        if (session()->get('user')) {
             $navbar = "logged-in-with-options";
-        }else{
+        } else {
             $navbar = "with-options";
         }
 
@@ -42,14 +40,15 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewQuiz($diff){
+    public function viewQuiz($diff)
+    {
         $diff_array = [
             'easy',
             'medium',
             'hard',
             'whatTheMeow',
         ];
-        if(!$diff || !(in_array($diff, $diff_array))){
+        if (!$diff || !(in_array($diff, $diff_array))) {
             return abort(404);
         };
 
@@ -57,52 +56,54 @@ class MathCatController extends Controller
         $footer = "true";
 
         // generate q based on difficulty
-        if($diff == "easy"){
-            
-            function calc($a,$sym,$b){
-                switch($sym) {
-                    case '+': return $a + $b;
-                    case '-': return $a - $b;
-                    case '*': return $a * $b;
-                    case '/': return $a / $b;
+        if ($diff == "easy") {
+
+            function calc($a, $sym, $b)
+            {
+                switch ($sym) {
+                    case '+':
+                        return $a + $b;
+                    case '-':
+                        return $a - $b;
+                    case '*':
+                        return $a * $b;
+                    case '/':
+                        return $a / $b;
                 }
             }
 
-            for($i=0; $i<20; $i++){
-                $qNum[$i] = $i+1;
-                $num1[$i] = rand(0,9);
-                $sym1[$i] = ['+','-','*','/'][rand(0,2)];
-                $num2[$i] = rand(0,9);
-    
-                $question[$i] = $num1[$i].' '.$sym1[$i].' '.$num2[$i];
+            for ($i = 0; $i < 20; $i++) {
+                $qNum[$i] = $i + 1;
+                $num1[$i] = rand(0, 9);
+                $sym1[$i] = ['+', '-', '*', '/'][rand(0, 2)];
+                $num2[$i] = rand(0, 9);
 
-                $answerCorrect[$i] = [calc($num1[$i],$sym1[$i],$num2[$i]), 'correct'];
-                
-                do{
-                    $answerWrong1[$i] = [rand(-20,20), 'wrong'];
-                    $answerWrong2[$i] = [rand(-20,20), 'wrong'];
-                    $answerWrong3[$i] = [rand(-20,20), 'wrong'];
-                }while(
-                    $answerWrong1[$i][0] == $answerCorrect[$i][0]||
-                    $answerWrong2[$i][0] == $answerCorrect[$i][0]||
+                $question[$i] = $num1[$i] . ' ' . $sym1[$i] . ' ' . $num2[$i];
+
+                $answerCorrect[$i] = [calc($num1[$i], $sym1[$i], $num2[$i]), 'correct'];
+
+                do {
+                    $answerWrong1[$i] = [rand(-20, 20), 'wrong'];
+                    $answerWrong2[$i] = [rand(-20, 20), 'wrong'];
+                    $answerWrong3[$i] = [rand(-20, 20), 'wrong'];
+                } while (
+                    $answerWrong1[$i][0] == $answerCorrect[$i][0] ||
+                    $answerWrong2[$i][0] == $answerCorrect[$i][0] ||
                     $answerWrong3[$i][0] == $answerCorrect[$i][0]
                 );
-    
+
                 $answers[$i] = [$answerCorrect[$i], $answerWrong1[$i], $answerWrong2[$i], $answerWrong3[$i]];
-    
+
                 $shuffledAnswers[$i] = $answers[$i];
                 shuffle($shuffledAnswers[$i]);
-    
+
                 $quiz[$i] = [$qNum[$i], $question[$i], $shuffledAnswers[$i]];
             }
-        }
-        else if($diff == "medium"){
+        } else if ($diff == "medium") {
             // here
-        }
-        else if($diff == "hard"){
+        } else if ($diff == "hard") {
             // here
-        }
-        else if($diff == "whatTheMeow"){
+        } else if ($diff == "whatTheMeow") {
             // here
         }
 
@@ -114,7 +115,11 @@ class MathCatController extends Controller
 
     public function viewUser()
     {
-        $navbar = "without-options";
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        } else {
+            $navbar = "with-options";
+        }
         $footer = "true";
         return view('user', compact(
             'navbar',
@@ -124,7 +129,9 @@ class MathCatController extends Controller
 
     public function viewLeaderboard($difficulty)
     {
+
         $navbar = "without-options";
+
         $footer = "true";
         return view(
             'leaderboard',
@@ -135,7 +142,9 @@ class MathCatController extends Controller
 
     public function viewPrivacy()
     {
+
         $navbar = "without-options";
+
         $footer = "true";
         return view('privacy-policy', compact(
             'navbar',
@@ -145,7 +154,11 @@ class MathCatController extends Controller
 
     public function viewHistory($difficulty)
     {
-        $navbar = "without-options";
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        } else {
+            $navbar = "with-options";
+        }
         $footer = "true";
 
         return view(
@@ -157,7 +170,11 @@ class MathCatController extends Controller
 
     public function viewAchievement()
     {
-        $navbar = "without-options";
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        } else {
+            $navbar = "with-options";
+        }
         $footer = "true";
         return view('achievement', compact(
             'navbar',
@@ -167,7 +184,11 @@ class MathCatController extends Controller
 
     public function viewLogin()
     {
-        $navbar = "with-options";
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        } else {
+            $navbar = "with-options";
+        }
         $footer = "true";
         return view('login', compact(
             'navbar',
