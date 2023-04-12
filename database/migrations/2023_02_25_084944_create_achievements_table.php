@@ -9,13 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('achievement');
-            $table->timestamps();
+            $table->string('name')->unique();
+            $table->text('description');
         });
     }
 

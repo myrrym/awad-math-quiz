@@ -55,12 +55,10 @@ class AchievementsSeeder extends Seeder
                 $description = 'Play a game in What The Meow mode.';
                 break;
             }
-            $timestamp = Carbon::now()->subSeconds(mt_rand(1, 20))->addMilliseconds(mt_rand(0, 999));
 
             DB::table('achievements')->insert([
                 'name' => $name,
                 'description' => $description,
-                'created_at' => $timestamp
               ]);
         }
   }
