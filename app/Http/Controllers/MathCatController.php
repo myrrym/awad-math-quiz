@@ -36,10 +36,25 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewQuiz()
-    {
+    public function viewQuiz($diff){
+        $diff_array = [
+            'easy',
+            'medium',
+            'hard',
+            'whatTheMeow',
+        ];
+        if(!$diff || !(in_array($diff, $diff_array))){
+            return abort(404);
+        };
+
         $navbar = "without-options";
         $footer = "true";
+
+        // generate q based on difficulty
+        if($diff == "easy"){
+            
+        }
+
         return view('quiz', compact(
             'navbar',
             'footer'

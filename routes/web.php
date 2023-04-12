@@ -23,7 +23,7 @@ use App\Http\Controllers\ActivityController;
 Route::get('/', [MathCatController::class, 'viewHomePage']);
 Route::get('/home', [MathCatController::class, 'viewHomePage']);
 Route::get('/example', [MathCatController::class, 'viewExample']);
-Route::get('/quiz', [MathCatController::class, 'viewQuiz']);
+Route::get('/quiz/{diff}', [MathCatController::class, 'viewQuiz']);
 Route::get('/user', [MathCatController::class, 'viewUser']);
 Route::get('/leaderboard', function () {
     return redirect('/leaderboard/Easy');
