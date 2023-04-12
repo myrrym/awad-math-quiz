@@ -45,5 +45,6 @@ Route::get('logout', function () {
     return redirect('/home');
 });
 
+Route::fallback([MathCatController::class, 'view404']);
 
 

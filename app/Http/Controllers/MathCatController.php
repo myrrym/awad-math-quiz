@@ -212,4 +212,14 @@ class MathCatController extends Controller
             'footer'
         ));
     }
+
+    public function view404()
+    {
+        $navbar = "without-options";
+        $footer = "true";
+        return view('404', compact(
+            'navbar',
+            'footer'
+        ));
+    }
 }
