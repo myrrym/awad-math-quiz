@@ -14,10 +14,10 @@
                 </div>
             </div>
             <div class="col-8">
-                <div class="block-question-question">1 + 1 + 1 + 1 + 1 + 1 + 1 = ?</div>
+                <div class="block-question-question">{{$quiz[0][1]}}</div>
             </div>
             <div class="col-2">
-                <div class="block-question-correct">5<br><span class="block-question-correct-small">answers</span></div>
+                <div class="block-question-correct">0<br><span class="block-question-correct-small">answers</span></div>
             </div>
         </div>
 
@@ -28,22 +28,22 @@
         <div class="row">
             <div class="col-6 block-answer-btn block-answer-btn-1">
                 <img src="/assets/img/triangle.png" alt="" class="block-answer-btn-img">
-                4
+                {{$quiz[0][2][0][0]}}
             </div>
             <div class="col-6 block-answer-btn block-answer-btn-2">
                 <img src="/assets/img/diamond.png" alt="" class="block-answer-btn-img">
-                8
+                {{$quiz[0][2][1][0]}}
             </div>
         </div>
 
         <div class="row">
             <div class="col-6 block-answer-btn block-answer-btn-3">
                 <img src="/assets/img/circle.png" alt="" class="block-answer-btn-img">
-                7
+                {{$quiz[0][2][2][0]}}
             </div>
             <div class="col-6 block-answer-btn block-answer-btn-4">
                 <img src="/assets/img/square.png" alt="" class="block-answer-btn-img">
-                10
+                {{$quiz[0][2][3][0]}}
             </div>
         </div>
 

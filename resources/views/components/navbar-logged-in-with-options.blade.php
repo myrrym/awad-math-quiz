@@ -10,14 +10,14 @@
         <div class="navbar-nav">
             <!-- signup trigger modal -->
             <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
-                    Sign Up
-                </button>
+                <a type="button" class="nav-link nav-link-ext" href="user">
+                    Account
+                </a>
             </div>
             <!-- login trigger modal -->
             <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    Login
+                <button type="button" class="nav-link nav-link-ext logout-button" href="logout">
+                    Logout
                 </button>
             </div>
         </div>
