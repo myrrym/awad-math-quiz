@@ -8,10 +8,10 @@
 @php
     $user = session('user');
     $difficulty = $difficulty ?? 'Easy';
-    $activities = app('App\Http\Controllers\ActivityController')->getActivities($user['username'], $difficulty);
-    $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($user['username'], $difficulty);
-    $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($user['username'], $difficulty);
-    $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($user['username'], $difficulty);
+    $activities = app('App\Http\Controllers\ActivityController')->getActivities($user['id'], $difficulty);
+    $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($user['id'], $difficulty);
+    $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($user['id'], $difficulty);
+    $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($user['id'], $difficulty);
     
 @endphp
 
