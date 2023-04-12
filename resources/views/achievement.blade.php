@@ -5,14 +5,14 @@
     <title>Two Section Page</title>
     @php
         $user = session('user');
-        $tengames = app('App\Http\Controllers\AchievementController')->getTenGames($user['username']);
-        $twentygames = app('App\Http\Controllers\AchievementController')->getTwentyGames($user['username']);
-        $fiftygames = app('App\Http\Controllers\AchievementController')->getFiftyGames($user['username']);
-        $hundredgames = app('App\Http\Controllers\AchievementController')->getHundredGames($user['username']);
-        $tenscore = app('App\Http\Controllers\AchievementController')->getTenScore($user['username']);
-        $fifteenscore = app('App\Http\Controllers\AchievementController')->getFifteenScore($user['username']);
-        $fullscore = app('App\Http\Controllers\AchievementController')->getFullScore($user['username']);
-        $whatthemeow = app('App\Http\Controllers\AchievementController')->getWhatTheMeow($user['username']);
+        $tengames = app('App\Http\Controllers\AchievementController')->getTenGames($user['id']);
+        $twentygames = app('App\Http\Controllers\AchievementController')->getTwentyGames($user['id']);
+        $fiftygames = app('App\Http\Controllers\AchievementController')->getFiftyGames($user['id']);
+        $hundredgames = app('App\Http\Controllers\AchievementController')->getHundredGames($user['id']);
+        $tenscore = app('App\Http\Controllers\AchievementController')->getTenScore($user['id']);
+        $fifteenscore = app('App\Http\Controllers\AchievementController')->getFifteenScore($user['id']);
+        $fullscore = app('App\Http\Controllers\AchievementController')->getFullScore($user['id']);
+        $whatthemeow = app('App\Http\Controllers\AchievementController')->getWhatTheMeow($user['id']);
     @endphp
 @endsection
 

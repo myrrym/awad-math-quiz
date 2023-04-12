@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
+            $table->unsignedBigInteger('user_id');
             $table->string('difficulty');
             $table->Integer('score');
             $table->double('time');

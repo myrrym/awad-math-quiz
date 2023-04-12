@@ -42,7 +42,7 @@ class ActivitiesSeeder extends Seeder
       $time = rand(1, 100) . '.' . rand(0, 99);
 
       DB::table('activities')->insert([
-        'username' => $user->username,
+        'user_id' => $user->id,
         'score' => $randomNumber,
         'difficulty' => $randomString,
         'time' => $time,
