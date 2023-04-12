@@ -47,13 +47,50 @@
             </div>
         </div>
 
+        <!--
+            ### task1: check correct ans
+            if ans correct, (1) give positive response (2) +1 to answer counter
+            if ans wrong (1) give sad response (2)
+            move on to next q
+            
+            ### task 2: repeat 20 times
+
+            ### task 3: results page
+
+            ### task 4: click exit ask to confirm
+        -->
+
     </div>
+
+    <div class="block-exit-card-bg"></div>
+    <div class="block-exit-card">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Are you sure you want to quit? :(</p>
+                        <p>The cat is not happy with your decision >:(</p>
+                    </div>
+                </div>
+                <div class="block-exit-card-btn-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="block-exit-card-btn block-exit-card-btn-no">Wait neo! D:</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="block-exit-card-btn block-exit-card-btn-yes">I dont care the meow, quit anyway</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
 @endsection
 
 @section("script")
     <script>
         $(document).ready(function() {
-            console.log("ready");
             
             // timer
             var time = new Date;
@@ -61,6 +98,10 @@
             setInterval(function() {
                 $('#js-time').text(Math.round((new Date - time) / 1000));
             }, 1000);
+
+            // exit card
+
+
         });
     </script>
 @endsection

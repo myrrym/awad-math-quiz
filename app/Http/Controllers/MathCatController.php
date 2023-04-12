@@ -61,44 +61,6 @@ class MathCatController extends Controller
         // wtm = 1+1+1+1+1+1+1, 1-1+1-1+1-1, 1/1-1/1*1*1/1
 
         if($diff == "easy"){
-            // test
-            // $qNum = 1;
-            // $num1 = rand(0,9);
-            // $sym1 = ['+','-','*','/'][rand(0,2)];
-            // $num2 = rand(0,9);
-
-            // $question = $num1.' '.$sym1.' '.$num2;
-
-            // function calc($a,$sym,$b){
-            //     switch($sym) {
-            //         case '+': return $a + $b;
-            //         case '-': return $a - $b;
-            //         case '*': return $a * $b;
-            //         case '/': return $a / $b;
-            //     }
-            // }
-
-            // $answerCorrect = [calc($num1,$sym1,$num2), 'correct'];
-            // do{
-            //     $answerWrong1 = [rand(-20,20), 'wrong'];
-            //     $answerWrong2 = [rand(-20,20), 'wrong'];
-            //     $answerWrong3 = [rand(-20,20), 'wrong'];
-            // }while(
-            //     $answerWrong1[0] == $answerCorrect[0]||
-            //     $answerWrong2[0] == $answerCorrect[0]||
-            //     $answerWrong3[0] == $answerCorrect[0]
-            // );
-
-            // $answers = [$answerCorrect, $answerWrong1, $answerWrong2, $answerWrong3];
-
-            // $shuffledAnswers = $answers;
-            // shuffle($shuffledAnswers);
-
-            // $quiz = [$qNum, $question, $shuffledAnswers];
-            // dd($quiz);
-
-            // 20 times
-
             function calc($a,$sym,$b){
                 switch($sym) {
                     case '+': return $a + $b;
@@ -135,6 +97,15 @@ class MathCatController extends Controller
     
                 $quiz[$i] = [$qNum[$i], $question[$i], $shuffledAnswers[$i]];
             }
+        }
+        else if($diff == "medium"){
+            // here
+        }
+        else if($diff == "hard"){
+            // here
+        }
+        else if($diff == "whatTheMeow"){
+            // here
         }
 
         return view('quiz', compact(

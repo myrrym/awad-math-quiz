@@ -120,7 +120,6 @@ body{
     font-size: 18pt;
 }
 .block-answer{
-    /* position: absolute; */
     bottom: 0;
     width: 100%;
 }
@@ -163,6 +162,45 @@ body{
     height: 3.5rem;
     width: 3.5rem;
     margin-right: 1.5rem;
+}
+.block-exit-card-bg{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    background: rgba(0,0,0,0.6);
+}
+.block-exit-card{
+    z-index: 50;
+    text-align: center;
+    background-color: #FFFFFF;
+    position: fixed;
+    width: 100vw;
+    height: 40vh;
+    bottom: 0;
+    margin-left: -12px;
+    border-radius: 50px 50px 0 0;
+    padding: 3rem;
+    font-size: 20pt;
+    font-weight: 900;
+}
+.block-exit-card-btn-group{
+    padding-top: 2rem;
+}
+.block-exit-card-btn{
+    border-radius: 50px;
+    padding: 1rem;
+    font-size: 16pt;
+    box-shadow: 5px 5px 15px 1px #888888;
+    cursor: pointer;
+}
+.block-exit-card-btn-no{
+    background-color: #46ca46;
+}
+.block-exit-card-btn-yes{
+    background-color: #FE5A36;
 }
 
 .homepage{
