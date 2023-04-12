@@ -16,7 +16,7 @@ class MathCatController extends Controller
         $user_id = $request->session()->get('user_id');
         $user = User::find($user_id);
         
-        if($user="true"){
+        if($user){
             $navbar = "logged-in-with-options";
         }else{
             $navbar = "with-options";

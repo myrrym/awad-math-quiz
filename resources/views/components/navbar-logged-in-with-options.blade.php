@@ -16,7 +16,7 @@
             </div>
             <!-- login trigger modal -->
             <div>
-                <button type="button" class="nav-link nav-link-ext logout-button" href="logout">
+                <button type="button" class="nav-link nav-link-ext logout-button" onclick="/logout">
                     Logout
                 </button>
             </div>
