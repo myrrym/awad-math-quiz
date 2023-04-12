@@ -22,7 +22,7 @@ class UsersSeeder extends Seeder
                 'username' => $username,
                 'email' => $username . '@gmail.com',
                 'password' => 'password',
-                'picture' => 'cat'.rand(1,9).'.jpg',
+                //'picture' => 'cat'.rand(1,9).'.jpg',
                 'created_at' => Carbon::now()->subSeconds(mt_rand(1, 20))->addMilliseconds(mt_rand(0, 999)),
             ]);
         }
