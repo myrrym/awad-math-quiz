@@ -18,7 +18,6 @@ use App\Http\Controllers\ActivityController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
 Route::get('/example', [MathCatController::class, 'viewExample']);
 Route::get('/quiz/{diff}', [MathCatController::class, 'viewQuiz']);
 Route::get('/home', [MathCatController::class, 'viewHomePage']);
