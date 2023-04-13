@@ -365,39 +365,12 @@ body{
     margin-top: 0px;
 }
 
-.cat-paw-1{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
+.cat-paw-1, .cat-paw-2, .cat-paw-3, .cat-paw-4{
+    width: 20vh;
+    height: 25vh;
+    margin: 0px 40px 0px 40px;
     /* position: absolute; */
     /* margin-top: ; */
-   opacity: 0;
-}
-
-.cat-paw-2{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
-    /* position: absolute; */
-    /* margin-top: 5em; */
-   opacity: 0;
-}
-
-.cat-paw-3{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
-    /* position: absolute; */
-    /* margin-top: 5em; */
-   opacity: 0;
-}
-
-.cat-paw-4{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
-    /* position: absolute; */
-    /* margin-top: 5em; */
    opacity: 0;
 }
 
