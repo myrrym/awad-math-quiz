@@ -86,7 +86,12 @@ For initial cloning, do the following:
     composer install
     cp .env.example .env (do not use in active deployment)
     php artisan key:generate
-    php artisan migrate
+    php artisan migrate:fresh
+    php artisan db:seed --class=UsersSeeder
+    php artisan db:seed --class=ActivitiesSeeder
+    php artisan db:seed --class=AchievementsSeeder
+    php artisan db:seed --class=UserAchivementsSeeder
+
 
 If sail artisan fails, you may need to first run sail up -d once.
 
