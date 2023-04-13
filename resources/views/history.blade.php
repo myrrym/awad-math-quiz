@@ -104,6 +104,8 @@
             margin-left: 1%;
             height: 95%;
             flex-direction: column;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
         .activity-table {
@@ -181,6 +183,9 @@
             padding: 10px;
             box-sizing: border-box;
             border-radius: 20px;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+
         }
 
         .top-frame a {
@@ -207,6 +212,10 @@
             box-sizing: border-box;
             border-radius: 20px;
             text-align: center;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+
+
         }
 
         .bottom-frame {
@@ -219,6 +228,10 @@
             border-radius: 20px;
             overflow-x: hidden;
             overflow-y: auto;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+
+
 
         }
 

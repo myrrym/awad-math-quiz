@@ -3,7 +3,7 @@
         <div class="navbar-nav">
             <a class="nav-link nav-link-ext {{ request()->is('/home') ? 'active' : '' }} " aria-current="page"
                 href="/home">home</a>
-            <a class="nav-link nav-link-ext" href="leaderboard/Easy">leaderboard</a>
+            <a class="nav-link nav-link-ext" href="/leaderboard/Easy">leaderboard</a>
         </div>
         <a class="navbar-brand" href="/home">MATH <img class="logo-math-cat" src="/assets/img/logo-math-cat.png"
                 alt=""> CAT</a>

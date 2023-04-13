@@ -100,7 +100,9 @@
             display: flex;
             align-items: stretch;
             /* overflow: hidden; */
+            
         }
+        
 
         .left-section {
             background-color: white;
@@ -113,6 +115,8 @@
             height: 95%;
             flex-direction: column;
             overflow: hidden;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
         .left-frame {
@@ -148,6 +152,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
         }
 
         .mid-section a.active {
@@ -161,6 +166,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
         }
 
         .middle-section {
@@ -185,6 +191,8 @@
             box-sizing: border-box;
             border-radius: 20px;
             text-align: center;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
         .bottom-frame {
@@ -196,6 +204,8 @@
             box-sizing: border-box;
             border-radius: 20px;
             overflow-y: auto;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
         .bottom-frame table {

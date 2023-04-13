@@ -7,30 +7,46 @@ use App\Models\Activity;
 use App\Models\Achievement;
 use App\Models\user_achievement;
 
+
 class AchievementController extends Controller
 {
     public function checkExistence($checkType, $id)
     {
-        $run = 'true';
-        $userRecords = user_achievement::where('user_id', $id)->get();
+        $userRecords = user_achievement::all();
 
         foreach ($userRecords as $userRecord) {
             if ($userRecord['user_id'] === $id && $userRecord['achievement_id'] === $checkType) {
-                $run = 'false';
-                break;
+                return false;
             }
         }
 
-        return $run;
+        return true;
     }
     public function insertRecord($id, $achievement_id)
     {
+
         user_achievement::create([
             'user_id' => $id,
             'achievement_id' => $achievement_id,
             'achieved_at' => now()
         ]);
     }
+
+    function registered($id)
+    {
+        if (static::checkExistence(1, $id)) {
+            static::insertRecord($id, 2);
+        }
+
+        $result = user_achievement::where('user_id', $id)->where('achievement_id', 1);
+
+        if ($result->count() === 0)
+            return 'false';
+
+        else
+            return 'true';
+    }
+
     function getTenGames($id)
     {
         if (static::checkExistence(2, $id)) {

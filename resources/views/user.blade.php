@@ -23,11 +23,6 @@
         <div class="middle-section"></div>
         <div class="right-section">
             <div class="main-frame">
-                <div><img class="profile-picture" src="/assets/img/cats/cat1.jpg"></div>
-                <div class="change"><a href="">change profile picture</a></div>
-
-
-                <button id="openModalBtn">Change Profile Picture (not working)</button>
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -49,16 +44,13 @@
                     </div>
                 </div>
 
-
-
                 <div class="label">username</div>
                 <div class="result">{{ $user['username'] }}</div>
                 <div class="label">email</div>
                 <div class="result">{{ $user['email'] }}</div>
                 <div class="label">joined since</div>
                 <div class="result">{{ $user['created_at']->format('Y-m-d') }}</div>
-                <div class="password"><a href="" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">change
-                        password (not working yet)</a></div>
+
             </div>
         </div>
     </div>
@@ -89,6 +81,8 @@
             height: 77vh;
             flex-direction: column;
             overflow: hidden;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
         .left-frame {
@@ -157,6 +151,8 @@
             border-radius: 20px;
             text-align: center;
             overflow: scroll;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
         .label {
@@ -190,9 +186,9 @@
 
 
         /*
-                .modal {
-                    display: none;
-                    /* Hidden by default */
+                            .modal {
+                                display: none;
+                                /* Hidden by default */
         position: fixed;
         /* Stay in place */
         z-index: 1;
