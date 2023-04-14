@@ -9,7 +9,13 @@
                     @foreach (session('error') as $error)
                         <div class="alert alert-danger">{{ $error }}</div>
                     @endforeach
-                @else
+                @endif
+                
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+                
+                @if (session('error') && !is_array(session('error')))
                     <div class="alert alert-danger">{{ session('error') }}</div>
                 @endif
             </div>
