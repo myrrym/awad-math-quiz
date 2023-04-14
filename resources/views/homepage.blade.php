@@ -14,7 +14,7 @@
         @if(session()->get('user'))
             <p class="meow-meow"> Meow Meow, {{ $user['username'] }}!</p>   
         @else
-            <p class="meow-meow"> Meow Meow, stanger! </p>
+            <p class="meow-meow"> Meow Meow, stranger! </p>
         @endif
             <p class="homeWord"> Test your math skill, <br> Fight for the top!</p>
                 <div class="difficulty">
