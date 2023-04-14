@@ -42,8 +42,14 @@ class MathCatController extends Controller
 
     public function viewQuiz($diff)
     {
-        $navbar = "without-options";
         $footer = "true";
+        $user = session('user');
+
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        } else {
+            $navbar = "without-options";
+        }
         
         // here
         $user = session('user');
