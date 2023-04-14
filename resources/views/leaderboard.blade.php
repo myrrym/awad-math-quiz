@@ -19,8 +19,7 @@
                 <a href="Easy" class="{{ $difficulty == 'Easy' ? 'active' : '' }}">Easy &nbsp;</a>
                 <a href="Medium" class="{{ $difficulty == 'Medium' ? 'active' : '' }}">Medium &nbsp;</a>
                 <a href="Hard" class="{{ $difficulty == 'Hard' ? 'active' : '' }}">Hard &nbsp;</a>
-                <a href="What the meow" class="{{ $difficulty == 'What the meow' ? 'active' : '' }}">What The Meow?
-                    &nbsp;</a>
+                <a href="What the meow" class="{{ $difficulty == 'What the meow' ? 'active' : '' }}">What The Meow?&nbsp;</a>
             </div>
             <div class="bottom-section left-frame"></div>
         </div>

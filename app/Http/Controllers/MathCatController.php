@@ -51,7 +51,6 @@ class MathCatController extends Controller
             $navbar = "without-options";
         }
         
-        // here
         $user = session('user');
 
         $diff_array = [
@@ -151,7 +150,6 @@ class MathCatController extends Controller
     }
 
     public function viewQuizResults(Request $request){
-        // here
         $user = session('user');
 
         $footer = "true";
@@ -205,10 +203,14 @@ class MathCatController extends Controller
 
     public function viewLeaderboard($difficulty)
     {
+        $navbar = "with-options";
 
-        $navbar = "without-options";
-
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        }
+        
         $footer = "true";
+
         return view(
             'leaderboard',
             ['difficulty' => $difficulty],
@@ -228,7 +230,7 @@ class MathCatController extends Controller
         ));
     }
 
-    public function viewHistory($difficulty)
+    public function viewHistory()
     {
         $navbar = "logged-in-with-options";
         if (!(session()->get('user'))) {
@@ -238,7 +240,7 @@ class MathCatController extends Controller
 
         return view(
             'history',
-            ['difficulty' => $difficulty],
+            // ['difficulty' => $difficulty],
             compact('navbar', 'footer')
         );
     }
