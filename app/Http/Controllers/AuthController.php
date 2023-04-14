@@ -17,7 +17,7 @@ class AuthController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        // Retrieve the user by email
+        // Retrieve the user by username
         $user = User::where('username', $request->username)->first();
 
         // Check if the user exists and the password is correct
@@ -54,29 +54,6 @@ class AuthController extends Controller
         // Return the token in the response
         //return response()->json(['message' => 'User successfully registered'], 201);
         return redirect("/home");
-    }
-
-    public function changePassword(Request $request)
-    {
-        $request->validate([
-            'current_password' => 'required|string',
-            'new_password' => 'required|string|min:8|confirmed',
-        ]);
-
-        // Retrieve the authenticated user
-        $user = $request->user();
-
-        // Check if the current password is correct
-        if (!Hash::check($request->current_password, $user->password)) {
-            return response()->json(['error' => 'Invalid current password'], 401);
-        }
-
-        // Update the user's password
-        $user->update([
-            'password' => Hash::make($request->new_password),
-        ]);
-
-        return response()->json(['message' => 'Password updated successfully'], 200);
     }
 
     // public function profile(Request $request)
