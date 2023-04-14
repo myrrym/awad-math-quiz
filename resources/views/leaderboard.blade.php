@@ -32,34 +32,35 @@
                     <div class="right-frame">
                         <div class="first">1st</div>
                         <div class="player">{{ $activity['username'] }}</div>
-                        <div class="score">{{ $activity['score'] }}</div>
-                        <div class="time">{{ $activity['time'] }}</div>
+                        <div class="score">{{ $activity['score'] }} / 20</div>
+                        <div class="time">{{ $activity['time'] }}s</div>
                     </div>
                 @elseif ($position == 2)
                     <div class="right-frame">
                         <div class="second">2nd</div>
                         <div class="player">{{ $activity['username'] }}</div>
-                        <div class="score">{{ $activity['score'] }}</div>
-                        <div class="time">{{ $activity['time'] }}</div>
+                        <div class="score">{{ $activity['score'] }} / 20</div>
+                        <div class="time">{{ $activity['time'] }}s</div>
                     </div>
                 @elseif ($position == 3)
                     <div class="right-frame">
                         <div class="third">3rd</div>
                         <div class="player">{{ $activity['username'] }}</div>
-                        <div class="score">{{ $activity['score'] }}</div>
-                        <div class="time">{{ $activity['time'] }}</div>
+                        <div class="score">{{ $activity['score'] }} / 20</div>
+                        <div class="time">{{ $activity['time'] }}s</div>
                     </div>
                 @endif
                 @php $position++ @endphp
             @endforeach
             <div class="bottom-frame">
                 <table>
-                    <tr>
-                        <td class="position">Position</td>
-                        <td>Username</td>
-                        <td>Score</td>
-                        <td>Time(s)</td>
-                    </tr>
+                    <thead>
+                        <th class="position">Position</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                        <th>Time(s)</th>
+                    </thead>
+                    <tbody>
                     @php $position = 1 @endphp
                     @foreach ($activities as $activity)
                         @if ($position > 3)
@@ -72,6 +73,7 @@
                         @endif
                         @php $position++ @endphp
                     @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
