@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-12">
                     <p class="block-congrats-p-congrats">CONGRATULATIONS! YOU GOT</p>
-                    <p class="block-congrats-p-score">20/20</p>
+                    <p class="block-congrats-p-score">{{$score}}/20</p>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <p class="block-reward-p-reward">HERE IS YOUR REWARD</p>
-                    <p class="block-reward-p-time"><span class="block-reward-p-time-taken">Time taken: </span>123 seconds</p>
+                    <p class="block-reward-p-time"><span class="block-reward-p-time-taken">Time taken: </span>{{$time}} seconds</p>
                 </div>
             </div>
         </div>

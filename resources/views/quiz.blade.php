@@ -15,10 +15,10 @@
                 </div>
             </div>
             <div class="col-8">
-                <div class="block-question-question">{{$quiz[0][1]}}</div>
+                <div id="js-question" class="block-question-question">{{$quiz[0][1]}}</div>
             </div>
             <div class="col-2">
-                <div class="block-question-correct">0<br><span class="block-question-correct-small">answers</span></div>
+                <div class="block-question-correct"><span id="js-correct">0</span><br><span class="block-question-correct-small">answer(s)</span></div>
             </div>
         </div>
 
@@ -27,38 +27,34 @@
     <div class="block-answer">
 
         <div class="row">
-            <div class="col-6 block-answer-btn block-answer-btn-1">
+            <button class="col-6 block-answer-btn block-answer-btn-1 js-option">
                 <img src="/assets/img/triangle.png" alt="" class="block-answer-btn-img">
-                {{$quiz[0][2][0][0]}}
-            </div>
-            <div class="col-6 block-answer-btn block-answer-btn-2">
+                <div id="js-options-content-1" class="js-options-content">{{$quiz[0][2][0][0]}}</div>
+                <div id="js-check-1" id="js-options-content-1" class="js-check" data-check="{{$quiz[0][2][0][1]}}"></div>
+            </button>
+            <button class="col-6 block-answer-btn block-answer-btn-2 js-option">
                 <img src="/assets/img/diamond.png" alt="" class="block-answer-btn-img">
-                {{$quiz[0][2][1][0]}}
-            </div>
+                <div id="js-options-content-2" class="js-options-content">{{$quiz[0][2][1][0]}}</div>
+                <div id="js-check-2" class="js-check" data-check="{{$quiz[0][2][1][1]}}"></div>
+            </button>
         </div>
 
         <div class="row">
-            <div class="col-6 block-answer-btn block-answer-btn-3">
+            <button class="col-6 block-answer-btn block-answer-btn-3 js-option">
                 <img src="/assets/img/circle.png" alt="" class="block-answer-btn-img">
-                {{$quiz[0][2][2][0]}}
-            </div>
-            <div class="col-6 block-answer-btn block-answer-btn-4">
+                <div id="js-options-content-3" class="js-options-content">{{$quiz[0][2][2][0]}}</div>
+                <div id="js-check-3" class="js-check" data-check="{{$quiz[0][2][2][1]}}"></div>
+            </button>
+            <button class="col-6 block-answer-btn block-answer-btn-4 js-option">
                 <img src="/assets/img/square.png" alt="" class="block-answer-btn-img">
-                {{$quiz[0][2][3][0]}}
-            </div>
+                <div id="js-options-content-4" class="js-options-content">{{$quiz[0][2][3][0]}}</div>
+                <div id="js-check-4" class="js-check" data-check="{{$quiz[0][2][3][1]}}"></div>
+            </button>
         </div>
-
-        <!--
-            ### task1: check correct ans
-            if ans correct, (1) give positive response (2) +1 to answer counter
-            if ans wrong (1) give sad response (2)
-            move on to next q
-            
-            ### task 2: repeat 20 times
-        -->
 
     </div>
 
+    <!-- leave confirmation -->
     <div id="js-card-bg" class="block-exit-card-bg" style="display: none;"></div>
     <div id="js-card" class="block-exit-card" style="display: none;">
         <div class="row">
@@ -87,18 +83,62 @@
 
 @section("script")
     <script>
+
+        var quiz_object = $.parseJSON('{!!$quiz_json!!}');
+        // console.log(quiz_object);
+        var quiz_index = 0;
+
         $(document).ready(function() {
             // loading
             setTimeout(() => {
                 $(".pageLoader").fadeOut(150)
             }, 1000);
-            
+
             // timer
             var time = new Date;
 
             setInterval(function() {
-                $('#js-time').text(Math.round((new Date - time) / 1000));
+                $('#js-time').text(Math.round(((new Date - time) - 1500) / 1000));
             }, 1000);
+
+            // answer check
+            $('.js-option').click(function(event){
+                // disable all buttons
+                $('.js-option').prop('disabled', true);
+                
+                // +1 if correct
+                var i = $('#js-correct');
+
+                if($(event.currentTarget).find('.js-check').data('check') == 'correct'){
+                    i.html((parseInt(i.html()) + 1).toString());
+                }
+
+                // current q&a dissapear, bring in new q
+                $('.js-options-content').fadeOut('slow');
+                $('#js-question').fadeOut('slow').promise().done(function(){
+
+                    quiz_index++;
+                    $('#js-question').html(quiz_object[quiz_index][1]).fadeIn();
+
+                    answers = $('.js-option');
+                    $.each(answers, function(key, value){
+                        $(value).attr('disabled', false);
+                        $(value).find('.js-options-content').html(quiz_object[quiz_index][2][key][0]).fadeIn();
+                        $(value).find('.js-check').data('check', quiz_object[quiz_index][2][key][1]);
+                    })
+
+                });
+
+                // after 20q, lead them to results page with score and time
+                if(quiz_index == 19){
+                    // take time
+                    var time = $('#js-time').html();
+                    // take answers
+                    var score = $('#js-correct').html();
+
+                    window.location = '/quiz-results?time=' + time + '&score=' + score;
+                }
+            })
 
             // exit card
             $('#js-exit').click(function(){

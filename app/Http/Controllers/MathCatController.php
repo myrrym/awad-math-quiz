@@ -42,10 +42,12 @@ class MathCatController extends Controller
 
     public function viewQuiz($diff)
     {
-        // task1: integrate with session
         // task2: medium
         // task3: hard
         // task4: wtm
+        // task1: integrate with session
+        // task5: make function
+        // task6: make sure everything works
         $diff_array = [
             'easy',
             'medium',
@@ -86,13 +88,13 @@ class MathCatController extends Controller
 
                 $answerCorrect[$i] = [calc($num1[$i], $sym1[$i], $num2[$i]), 'correct'];
 
-                do {
+                do{
                     $answerWrong1[$i] = [rand(-20, 20), 'wrong'];
                     $answerWrong2[$i] = [rand(-20, 20), 'wrong'];
                     $answerWrong3[$i] = [rand(-20, 20), 'wrong'];
-                } while (
-                    $answerWrong1[$i][0] == $answerCorrect[$i][0] ||
-                    $answerWrong2[$i][0] == $answerCorrect[$i][0] ||
+                }while (
+                    $answerWrong1[$i][0] == $answerCorrect[$i][0] &&
+                    $answerWrong2[$i][0] == $answerCorrect[$i][0] &&
                     $answerWrong3[$i][0] == $answerCorrect[$i][0]
                 );
 
@@ -103,6 +105,8 @@ class MathCatController extends Controller
 
                 $quiz[$i] = [$qNum[$i], $question[$i], $shuffledAnswers[$i]];
             }
+            $quiz_json = json_encode($quiz);
+            // dd($quiz);
         } else if ($diff == "medium") {
             // here
         } else if ($diff == "hard") {
@@ -115,16 +119,26 @@ class MathCatController extends Controller
             'navbar',
             'footer',
             'quiz',
+            'quiz_json',
         ),);
     }
 
-    public function viewQuizResults(){
+    public function viewQuizResults(Request $request){
         $navbar = "with-options";
         $footer = "true";
+
+        // task2: save to user acc
+        // task1: create entry in games table
+        // task3: user session
+
+        $time = $request->time;
+        $score = $request->score;
 
         return view('quiz-results', compact(
             'navbar',
             'footer',
+            'time',
+            'score',
         ),);
     }
 
