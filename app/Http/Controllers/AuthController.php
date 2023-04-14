@@ -5,55 +5,72 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
 
     public function login(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'username' => 'required|string|min:8|max:255',
-            'password' => 'required|min:8',
-        ]);
+        try {
+            $request->validate([
+                'username' => 'required|string|min:8|max:255',
+                'password' => 'required|min:8',
+            ]);
+        } catch (ValidationException $e) {
+            $errorMessage = $e->validator->getMessageBag()->all();
+            Session::flash('error', $errorMessage);
+            return redirect()->back();
+        }
+
 
         // Retrieve the user by username
         $user = User::where('username', $request->username)->first();
 
         // Check if the user exists and the password is correct
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['error' => 'Invalid username or password'], 401);
+            Session::flash('error', 'Invalid username or password.');
+            return redirect()->back();
         }
 
-        //initiate session
+        // Initiate session
         $request->session()->put('user', $user);
+        Session::flash('success', 'You have been logged in successfully.');
 
-        // return response()->json(['message' => 'User successfully registered'], 201);
-        return redirect("/");
-
+        return redirect('/');
     }
 
     public function register(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'username' => 'required|string|min:8|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
 
+        try{
+            $request->validate([
+                'username' => 'required|string|min:8|max:255',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|string|min:8|confirmed',
+            ]);
+        }catch (ValidationException $e) {
+            $errorMessage = $e->validator->getMessageBag()->all();
+            Session::flash('error', $errorMessage);
+            return redirect()->back();
+        }
+    
         // Create a new user
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'picture' => 'cat'.rand(1,9).'.jpg',
+            'picture' => 'cat' . rand(1, 9) . '.jpg',
         ]);
-           
-
-        // Return the token in the response
-        //return response()->json(['message' => 'User successfully registered'], 201);
-        return redirect("/home");
+    
+        if ($user) {
+            Session::flash('success', 'You have been registered successfully.');
+            return redirect('/home');
+        } else {
+            Session::flash('error', 'Registration failed.');
+            return redirect()->back()->withInput();
+        }
     }
 
     // public function profile(Request $request)
