@@ -22,13 +22,7 @@
                             <input type="checkbox" class="form-check-input" name="remember_me" id="check">
                             <label class="form-check-label" for="check">Remember Me</label>
                         </div>
-                        <div>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-link" data-bs-toggle="modal"
-                                data-bs-target="#forgotPasswordModal">
-                                Forgot Password
-                            </button>
-                        </div>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     <p>dont have an account?</p>
