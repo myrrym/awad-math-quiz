@@ -13,8 +13,8 @@ class AuthController extends Controller
     {
         // dd($request);
         $request->validate([
-            'username' => 'required|string|max:255',
-            'password' => 'required',
+            'username' => 'required|string|min:8|max:255',
+            'password' => 'required|min:8',
         ]);
 
         // Retrieve the user by email
@@ -37,7 +37,7 @@ class AuthController extends Controller
     {
         // dd($request);
         $request->validate([
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|min:8|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
@@ -47,7 +47,7 @@ class AuthController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'picture' => 'cat1.jpg',
+            'picture' => 'cat'.rand(1,9).'.jpg',
         ]);
 
 
