@@ -46,7 +46,7 @@
         <x-loginModal/>
         <x-signup/>
         <x-forgotpassword/>
-
+        <x-authmessage/>
     </div>
         
     @if ($footer == 'true')
