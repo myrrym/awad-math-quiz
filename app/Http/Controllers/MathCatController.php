@@ -42,12 +42,12 @@ class MathCatController extends Controller
 
     public function viewQuiz($diff)
     {
-        // task2: medium
-        // task3: hard
-        // task4: wtm
+        $navbar = "without-options";
+        $footer = "true";
+
         // task1: integrate with session
-        // task5: make function
         // task6: make sure everything works
+
         $diff_array = [
             'easy',
             'medium',
@@ -57,63 +57,27 @@ class MathCatController extends Controller
         if (!$diff || !(in_array($diff, $diff_array))) {
             return abort(404);
         };
-
-        $navbar = "without-options";
-        $footer = "true";
-
-        // generate q based on difficulty
+        $allow_zero = true;
         if ($diff == "easy") {
-
-            function calc($a, $sym, $b)
-            {
-                switch ($sym) {
-                    case '+':
-                        return $a + $b;
-                    case '-':
-                        return $a - $b;
-                    case '*':
-                        return $a * $b;
-                    case '/':
-                        return $a / $b;
-                }
-            }
-
-            for ($i = 0; $i < 20; $i++) {
-                $qNum[$i] = $i + 1;
-                $num1[$i] = rand(0, 9);
-                $sym1[$i] = ['+', '-', '*', '/'][rand(0, 2)];
-                $num2[$i] = rand(0, 9);
-
-                $question[$i] = $num1[$i] . ' ' . $sym1[$i] . ' ' . $num2[$i];
-
-                $answerCorrect[$i] = [calc($num1[$i], $sym1[$i], $num2[$i]), 'correct'];
-
-                do{
-                    $answerWrong1[$i] = [rand(-20, 20), 'wrong'];
-                    $answerWrong2[$i] = [rand(-20, 20), 'wrong'];
-                    $answerWrong3[$i] = [rand(-20, 20), 'wrong'];
-                }while (
-                    $answerWrong1[$i][0] == $answerCorrect[$i][0] &&
-                    $answerWrong2[$i][0] == $answerCorrect[$i][0] &&
-                    $answerWrong3[$i][0] == $answerCorrect[$i][0]
-                );
-
-                $answers[$i] = [$answerCorrect[$i], $answerWrong1[$i], $answerWrong2[$i], $answerWrong3[$i]];
-
-                $shuffledAnswers[$i] = $answers[$i];
-                shuffle($shuffledAnswers[$i]);
-
-                $quiz[$i] = [$qNum[$i], $question[$i], $shuffledAnswers[$i]];
-            }
-            $quiz_json = json_encode($quiz);
-            // dd($quiz);
+            $question_range = 9;
+            $answer_range = 5;
+            $argument_number = 2;
         } else if ($diff == "medium") {
-            // here
+            $question_range = 50;
+            $answer_range = 15;
+            $argument_number = 3;
         } else if ($diff == "hard") {
-            // here
+            $question_range = 500;
+            $answer_range = 20;
+            $argument_number = 4;
         } else if ($diff == "whatTheMeow") {
-            // here
+            $question_range = 1;
+            $answer_range = 3;
+            $argument_number = 10;
+            $allow_zero = false;
         }
+        $quiz = $this->generateOutput($argument_number, $question_range, $answer_range, $allow_zero);
+        $quiz_json = json_encode($quiz);
 
         return view('quiz', compact(
             'navbar',
@@ -121,6 +85,57 @@ class MathCatController extends Controller
             'quiz',
             'quiz_json',
         ),);
+    }
+
+    protected function generateOutput($argument_number, $question_range, $answer_range, $allow_zero){
+        for ($i = 0; $i < 20; $i++) {
+            $statement = $this->generateStatement($argument_number, $question_range, $answer_range, $allow_zero);
+            $question[$i] = $statement[0];
+            $quiz[$i] = [$i+1, $question[$i], $statement[1]];
+        }
+
+        return $quiz;
+    }
+    
+    protected function generateAnswers($question, $arg, $operator, $answer_range){
+        $answer_pool = [];
+        $answer_pool[0] = [
+            eval('return '.$question.';'),
+            'correct',
+        ];
+        $placeholder_pool = [];
+        $placeholder_pool[0] = $answer_pool[0][0];
+        for($i = 0; $i < 3; $i++){
+            do{
+                $placeholder = $answer_pool[0][0] + (rand(-($answer_range), $answer_range));
+            }while(in_array($placeholder, $placeholder_pool));
+
+            $placeholder_pool[$i + 1] = $placeholder;
+            $answer_pool[$i + 1] = [$placeholder, 'wrong'];
+        }
+        shuffle($answer_pool);
+        $shuffled = $answer_pool;
+
+        return $shuffled;
+    }
+
+    protected function generateStatement($arg_number, $question_range, $answer_range, $allow_zero){
+        $statement = '';
+        $arg = [];
+        $operator = [];
+        $zero = $allow_zero ? 0 : 1;
+        for($i = 0; $i < $arg_number; $i++){
+            $arg[$i] = rand($zero, $question_range);
+            if($statement == ""){
+                $statement = $arg[$i];
+            }
+            else{
+                $operator[$i] = ['+', '-', '*', '/'][rand(0, 2)];
+                $statement = $statement ." ". $operator[$i] ." ".rand($zero, $question_range);
+            }
+
+        }
+        return [$statement, $this->generateAnswers($statement, $arg, $operator, $answer_range)];
     }
 
     public function viewQuizResults(Request $request){
