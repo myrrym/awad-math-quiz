@@ -131,12 +131,14 @@
 
                 // after 20q, lead them to results page with score and time
                 if(quiz_index == 19){
+                    // take difficulty
+                    var diff = "{{$diff}}";
                     // take time
                     var time = $('#js-time').html();
                     // take answers
                     var score = $('#js-correct').html();
 
-                    window.location = '/quiz-results?time=' + time + '&score=' + score;
+                    window.location = '/quiz-results?diff=' + diff + '&time=' + time + '&score=' + score;
                 }
             })
 

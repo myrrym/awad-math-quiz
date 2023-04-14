@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-
+use App\Models\Activity;
 
 class MathCatController extends Controller
 {
@@ -44,9 +44,9 @@ class MathCatController extends Controller
     {
         $navbar = "without-options";
         $footer = "true";
-
-        // task1: integrate with session
-        // task6: make sure everything works
+        
+        // here
+        $user = session('user');
 
         $diff_array = [
             'easy',
@@ -57,26 +57,31 @@ class MathCatController extends Controller
         if (!$diff || !(in_array($diff, $diff_array))) {
             return abort(404);
         };
-        $allow_zero = true;
+        $config = [
+            'allow_zero' => true,
+            'question_range' => 9,
+            'answer_range' => 5,
+            'argument_number' => 2,
+        ];
         if ($diff == "easy") {
-            $question_range = 9;
-            $answer_range = 5;
-            $argument_number = 2;
+            $config['question_range'] =  9;
+            $config['answer_range'] =  5;
+            $config['argument_number'] =  2;
         } else if ($diff == "medium") {
-            $question_range = 50;
-            $answer_range = 15;
-            $argument_number = 3;
+            $config['question_range'] =  50;
+            $config['answer_range'] =  15;
+            $config['argument_number'] =  3;
         } else if ($diff == "hard") {
-            $question_range = 500;
-            $answer_range = 20;
-            $argument_number = 4;
+            $config['question_range'] =  500;
+            $config['answer_range'] =  20;
+            $config['argument_number'] =  4;
         } else if ($diff == "whatTheMeow") {
-            $question_range = 1;
-            $answer_range = 3;
-            $argument_number = 10;
-            $allow_zero = false;
+            $config['question_range'] =  1;
+            $config['answer_range'] =  3;
+            $config['argument_number'] =  10;
+            $config['allow_zero'] =  false;
         }
-        $quiz = $this->generateOutput($argument_number, $question_range, $answer_range, $allow_zero);
+        $quiz = $this->generateOutput($config);
         $quiz_json = json_encode($quiz);
 
         return view('quiz', compact(
@@ -84,12 +89,13 @@ class MathCatController extends Controller
             'footer',
             'quiz',
             'quiz_json',
+            'diff',
         ),);
     }
 
-    protected function generateOutput($argument_number, $question_range, $answer_range, $allow_zero){
+    protected function generateOutput($config){
         for ($i = 0; $i < 20; $i++) {
-            $statement = $this->generateStatement($argument_number, $question_range, $answer_range, $allow_zero);
+            $statement = $this->generateStatement($config);
             $question[$i] = $statement[0];
             $quiz[$i] = [$i+1, $question[$i], $statement[1]];
         }
@@ -97,17 +103,17 @@ class MathCatController extends Controller
         return $quiz;
     }
     
-    protected function generateAnswers($question, $arg, $operator, $answer_range){
+    protected function generateAnswers($question, $arg, $operator, $config){
         $answer_pool = [];
         $answer_pool[0] = [
             eval('return '.$question.';'),
             'correct',
         ];
-        $placeholder_pool = [];
-        $placeholder_pool[0] = $answer_pool[0][0];
+        $placeholder_pool = []; // put generated answer in a temporary pool to check for dupes
+        $placeholder_pool[0] = $answer_pool[0][0];  // register the correct answer as the first in the pool
         for($i = 0; $i < 3; $i++){
             do{
-                $placeholder = $answer_pool[0][0] + (rand(-($answer_range), $answer_range));
+                $placeholder = $answer_pool[0][0] + (rand(-($config['answer_range']), $config['answer_range']));
             }while(in_array($placeholder, $placeholder_pool));
 
             $placeholder_pool[$i + 1] = $placeholder;
@@ -119,32 +125,45 @@ class MathCatController extends Controller
         return $shuffled;
     }
 
-    protected function generateStatement($arg_number, $question_range, $answer_range, $allow_zero){
+    protected function generateStatement($config){
         $statement = '';
         $arg = [];
         $operator = [];
-        $zero = $allow_zero ? 0 : 1;
-        for($i = 0; $i < $arg_number; $i++){
-            $arg[$i] = rand($zero, $question_range);
+        $zero = $config['allow_zero'] ? 0 : 1;
+        for($i = 0; $i < $config['argument_number']; $i++){
+            $arg[$i] = rand($zero, $config['question_range']);
             if($statement == ""){
                 $statement = $arg[$i];
             }
             else{
                 $operator[$i] = ['+', '-', '*', '/'][rand(0, 2)];
-                $statement = $statement ." ". $operator[$i] ." ".rand($zero, $question_range);
+                $statement = $statement ." ". $operator[$i] ." ".rand($zero, $config['question_range']);
             }
 
         }
-        return [$statement, $this->generateAnswers($statement, $arg, $operator, $answer_range)];
+        return [$statement, $this->generateAnswers($statement, $arg, $operator, $config)];
     }
 
     public function viewQuizResults(Request $request){
+        // here
+        $user = session('user');
+
         $navbar = "with-options";
         $footer = "true";
+        
+        // session
+        // $user = $this->users->find($id);
 
-        // task2: save to user acc
-        // task1: create entry in games table
-        // task3: user session
+        // $user = User::find($request->user_id);
+
+        if($user){
+            Activity::create([
+                'user_id' => $user->id,
+                'difficulty' => $request->diff,
+                'score' => $request->score,
+                'time' => $request->time,
+            ]);
+        }
 
         $time = $request->time;
         $score = $request->score;

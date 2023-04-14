@@ -23,7 +23,6 @@ class Activity extends Authenticatable
         'difficulty',
         'score',
         'time',
-        'date',
     ];
 
     /**
