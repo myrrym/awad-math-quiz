@@ -38,15 +38,14 @@ class ActivitiesSeeder extends Seeder
       }
 
       $user = $users->random();
-      $timestamp = Carbon::now()->subSeconds(mt_rand(1, 20))->addMilliseconds(mt_rand(0, 999));
       $time = rand(1, 100) . '.' . rand(0, 99);
 
       DB::table('activities')->insert([
-        'username' => $user->username,
+        'user_id' => $user->id,
         'score' => $randomNumber,
         'difficulty' => $randomString,
         'time' => $time,
-        'created_at' => $timestamp
+        'created_at' => now()
       ]);
     }
   }

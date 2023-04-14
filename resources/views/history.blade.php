@@ -8,10 +8,10 @@
 @php
     $user = session('user');
     $difficulty = $difficulty ?? 'Easy';
-    $activities = app('App\Http\Controllers\ActivityController')->getActivities($user['username'], $difficulty);
-    $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($user['username'], $difficulty);
-    $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($user['username'], $difficulty);
-    $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($user['username'], $difficulty);
+    $activities = app('App\Http\Controllers\ActivityController')->getActivities($user['id'], $difficulty);
+    $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($user['id'], $difficulty);
+    $totalTest = app('App\Http\Controllers\ActivityController')->getTestsCompleted($user['id'], $difficulty);
+    $currentRank = app('App\Http\Controllers\ActivityController')->getCurrentRank($user['id'], $difficulty);
     
 @endphp
 
@@ -104,6 +104,8 @@
             margin-left: 1%;
             height: 95%;
             flex-direction: column;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
         .activity-table {
@@ -181,6 +183,9 @@
             padding: 10px;
             box-sizing: border-box;
             border-radius: 20px;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+
         }
 
         .top-frame a {
@@ -207,6 +212,10 @@
             box-sizing: border-box;
             border-radius: 20px;
             text-align: center;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+
+
         }
 
         .bottom-frame {
@@ -219,6 +228,10 @@
             border-radius: 20px;
             overflow-x: hidden;
             overflow-y: auto;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+
+
 
         }
 

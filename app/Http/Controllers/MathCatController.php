@@ -206,4 +206,15 @@ class MathCatController extends Controller
             'footer'
         ));
     }
+
+    public function getUsers()
+    {
+        return User::all();
+    }
+
+    public function getUsername($user_id){
+        $username = User::find($user_id) -> username;
+
+        return $username;
+    }
 }

@@ -38,6 +38,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
 
+        // validate registration - wip - ai ning - if you have something better by all means go for it
         function validatePasswords(){
             if($('#register-password').val() != $('#password_confirmation').val()){
                 toasty.fire({
@@ -57,20 +58,21 @@
             timer: 3000,
             timerProgressBar: true,
         })
+
+        $('#js-btn-submit').on('click', function(event){
+            event.preventDefault();
+            validatePasswords();
+        })
+
+        // task1: register validation
+        // case1: passwords do not match
+        // case2: username taken
+
+        // task2: login error
+        // case1: username doesnt exist
+
+        // redirect player based on difficulty
         $(document).ready(function(){
-
-            $('#js-btn-submit').on('click', function(event){
-                event.preventDefault();
-                validatePasswords();
-            })
-            // task1: register validation
-            // case1: passwords do not match
-            // case2: username taken
-
-            // task2: login error
-            // case1: username doesnt exist
-
-            // redirect player based on difficulty
             $(".js-card").click(function(){
                 var val = $(this).data('diff');
                 

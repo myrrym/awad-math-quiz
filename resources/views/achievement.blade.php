@@ -5,14 +5,14 @@
     <title>Two Section Page</title>
     @php
         $user = session('user');
-        $tengames = app('App\Http\Controllers\AchievementController')->getTenGames($user['username']);
-        $twentygames = app('App\Http\Controllers\AchievementController')->getTwentyGames($user['username']);
-        $fiftygames = app('App\Http\Controllers\AchievementController')->getFiftyGames($user['username']);
-        $hundredgames = app('App\Http\Controllers\AchievementController')->getHundredGames($user['username']);
-        $tenscore = app('App\Http\Controllers\AchievementController')->getTenScore($user['username']);
-        $fifteenscore = app('App\Http\Controllers\AchievementController')->getFifteenScore($user['username']);
-        $fullscore = app('App\Http\Controllers\AchievementController')->getFullScore($user['username']);
-        $whatthemeow = app('App\Http\Controllers\AchievementController')->getWhatTheMeow($user['username']);
+        $tengames = app('App\Http\Controllers\AchievementController')->getTenGames($user['id']);
+        $twentygames = app('App\Http\Controllers\AchievementController')->getTwentyGames($user['id']);
+        $fiftygames = app('App\Http\Controllers\AchievementController')->getFiftyGames($user['id']);
+        $hundredgames = app('App\Http\Controllers\AchievementController')->getHundredGames($user['id']);
+        $tenscore = app('App\Http\Controllers\AchievementController')->getTenScore($user['id']);
+        $fifteenscore = app('App\Http\Controllers\AchievementController')->getFifteenScore($user['id']);
+        $fullscore = app('App\Http\Controllers\AchievementController')->getFullScore($user['id']);
+        $whatthemeow = app('App\Http\Controllers\AchievementController')->getWhatTheMeow($user['id']);
     @endphp
 @endsection
 
@@ -22,9 +22,9 @@
         <div class="left-section">
             <div class="top-section left-frame"></div>
             <div class="mid-section left-frame">
-                <a href="/user">Profile &nbsp;</a>
-                <a href="/history">History &nbsp;</a>
-                <a href="/achievement">Achievement &nbsp;</a>
+                <a href="user">Profile &nbsp;</a>
+                <a href="history">History &nbsp;</a>
+                <a href="achievement">Achievement &nbsp;</a>
             </div>
             <div class="bottom-section left-frame"></div>
         </div>
@@ -152,7 +152,6 @@
             height: 78vh;
             display: flex;
             align-items: stretch;
-            /* overflow: hidden; */
         }
 
         .my-table td,
@@ -171,6 +170,7 @@
             height: 95%;
             flex-direction: column;
             overflow: hidden;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .left-frame {
@@ -179,6 +179,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+
         }
 
         .left-frame a {
@@ -238,6 +240,8 @@
             border-radius: 20px;
             text-align: center;
             overflow-y: auto;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
         }
     </style>
 @endsection

@@ -19,7 +19,7 @@ class user_achievement extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
+        'user_id',
         'achievement_id',
         'achieved_at',
     ];

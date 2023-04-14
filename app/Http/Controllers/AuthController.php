@@ -49,7 +49,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'picture' => 'cat'.rand(1,9).'.jpg',
         ]);
-
+           
 
         // Return the token in the response
         //return response()->json(['message' => 'User successfully registered'], 201);

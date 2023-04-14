@@ -7,16 +7,16 @@ use App\Models\Activity;
 
 class ActivityController extends Controller
 {
-    function getActivities($username, $difficulty)
+    function getActivities($id, $difficulty)
     {
 
-        return Activity::all()->where('username', $username)->where('difficulty', $difficulty)->sortByDesc('created_at');
+        return Activity::all()->where('user_id', $id)->where('difficulty', $difficulty)->sortByDesc('created_at');
     }
 
-    function getBestActivity($username, $difficulty)
+    function getBestActivity($id, $difficulty)
     {
 
-        $data = Activity::all()->where('username', $username)->where('difficulty', $difficulty);
+        $data = Activity::all()->where('user_id', $id)->where('difficulty', $difficulty);
         $bestScore = $data->max('score');
         $bestActivity = $data->where('score', $bestScore)->first();
 
@@ -26,10 +26,10 @@ class ActivityController extends Controller
             return $bestActivity;
     }
 
-    function getCurrentRank($username, $difficulty)
+    function getCurrentRank($id, $difficulty)
     {
         $bestActivity = Activity::where('difficulty', $difficulty)
-            ->where('username', $username)
+            ->where('user_id', $id)
             ->orderByDesc('score')
             ->orderBy('time')
             ->first();
@@ -52,9 +52,9 @@ class ActivityController extends Controller
     }
 
 
-    function getTestsCompleted($username, $difficulty)
+    function getTestsCompleted($id, $difficulty)
     {
 
-        return count(Activity::all()->where('difficulty', $difficulty)->where('username', $username));
+        return count(Activity::all()->where('difficulty', $difficulty)->where('user_id', $id));
     }
 }

@@ -19,7 +19,7 @@ class Activity extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'username',
+        'user_id',
         'difficulty',
         'score',
         'time',

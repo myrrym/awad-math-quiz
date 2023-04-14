@@ -248,16 +248,17 @@ body{
 .meow-meow{
     text-align: center;
     position: absolute;
-    margin-top: 10px;
+    margin-top: 3vh;
     font-size: 30px;
     color: black;
     font-weight: bolder;
+    margin-bottom: 10vh;
 }
 
 .homeWord{
     text-align: center;
     position: absolute;
-    margin-top: 60px;
+    margin-top: 15vh;
     font-size: 35px;
     color: rgb(95, 95, 95);
     font-weight: bolder;
@@ -266,12 +267,15 @@ body{
 .difficulty{
     display: flex;
     flex-direction: row;
-    margin-top: 170px;
+    margin-top: 30vh;
     margin-bottom: 0px;
+    
 }
 
 .card-diff{
     cursor: pointer;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
 }
 
 .easy{
@@ -361,39 +365,12 @@ body{
     margin-top: 0px;
 }
 
-.cat-paw-1{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
+.cat-paw-1, .cat-paw-2, .cat-paw-3, .cat-paw-4{
+    width: 20vh;
+    height: 25vh;
+    margin: 0px 40px 0px 40px;
     /* position: absolute; */
     /* margin-top: ; */
-   opacity: 0;
-}
-
-.cat-paw-2{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
-    /* position: absolute; */
-    /* margin-top: 5em; */
-   opacity: 0;
-}
-
-.cat-paw-3{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
-    /* position: absolute; */
-    /* margin-top: 5em; */
-   opacity: 0;
-}
-
-.cat-paw-4{
-    width: 150px;
-    height: 200px;
-    margin: 0px 50px 0px 60px;
-    /* position: absolute; */
-    /* margin-top: 5em; */
    opacity: 0;
 }
 

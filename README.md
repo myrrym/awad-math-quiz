@@ -86,17 +86,35 @@ For initial cloning, do the following:
     composer install
     cp .env.example .env (do not use in active deployment)
     php artisan key:generate
-    php artisan migrate
+    php artisan migrate:fresh
+    php artisan db:seed --class=UsersSeeder
+    php artisan db:seed --class=ActivitiesSeeder
+    php artisan db:seed --class=AchievementsSeeder
+    php artisan db:seed --class=UserAchivementsSeeder
+
 
 If sail artisan fails, you may need to first run sail up -d once.
 
 for the jwt installation 
+```rb
     composer require tymon/jwt-auth
     php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
     php artisan jwt:secret
+```
+
+for password reset
+```rb
+    composer require laravel/ui
+    php artisan ui bootstrap --auth
+    IMPORTANT!!!change the vita version from v4.0.0 to v3.0.0!!!IMPORTANT
+    npm install
+    npm run dev
+```    
     
 for consuming api
+```rb
     npm install axios
+```
 
 To setup the corresponding react environment, do the following:
 
