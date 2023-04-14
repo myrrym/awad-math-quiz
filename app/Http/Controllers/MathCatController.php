@@ -192,10 +192,14 @@ class MathCatController extends Controller
 
     public function viewLeaderboard($difficulty)
     {
+        $navbar = "with-options";
 
-        $navbar = "without-options";
-
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        }
+        
         $footer = "true";
+
         return view(
             'leaderboard',
             ['difficulty' => $difficulty],
