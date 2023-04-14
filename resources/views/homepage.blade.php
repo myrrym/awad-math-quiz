@@ -18,10 +18,10 @@
         @endif
             <p class="homeWord"> Test your math skill, <br> Fight for the top!</p>
                 <div class="difficulty">
-                    <a class="js-card card-diff easy" data-diff="easy"><img class="easy-pic" src="/assets/img/easy.png" alt=""><br>EASY</a>
-                    <a class="js-card card-diff medium" data-diff="medium"><img class="medium-pic" src="/assets/img/medium.png" alt=""><br>MEDIUM</a>
-                    <a class="js-card card-diff hard" data-diff="hard"><img class="hard-pic" src="/assets/img/hard.png" alt=""><br>HARD</a>
-                    <a class="js-card card-diff whatTheMeow" data-diff="whatTheMeow"><img class="wtm-pic" src="/assets/img/wtm.png" alt=""><br>WHAT THE MEOW</a>
+                    <a class="js-card card-diff easy" data-diff="Easy"><img class="easy-pic" src="/assets/img/easy.png" alt=""><br>EASY</a>
+                    <a class="js-card card-diff medium" data-diff="Medium"><img class="medium-pic" src="/assets/img/medium.png" alt=""><br>MEDIUM</a>
+                    <a class="js-card card-diff hard" data-diff="Hard"><img class="hard-pic" src="/assets/img/hard.png" alt=""><br>HARD</a>
+                    <a class="js-card card-diff whatTheMeow" data-diff="What the meow"><img class="wtm-pic" src="/assets/img/wtm.png" alt=""><br>WHAT THE MEOW</a>
                 </div>
         </div>
         <div class="paws">

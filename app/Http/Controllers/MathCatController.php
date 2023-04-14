@@ -55,10 +55,10 @@ class MathCatController extends Controller
         $user = session('user');
 
         $diff_array = [
-            'easy',
-            'medium',
-            'hard',
-            'whatTheMeow',
+            'Easy',
+            'Medium',
+            'Hard',
+            'What the meow',
         ];
         if (!$diff || !(in_array($diff, $diff_array))) {
             return abort(404);
@@ -69,15 +69,15 @@ class MathCatController extends Controller
             'answer_range' => 5,
             'argument_number' => 2,
         ];
-        if ($diff == "easy") {
+        if ($diff == "Easy") {
             $config['question_range'] =  9;
             $config['answer_range'] =  5;
             $config['argument_number'] =  2;
-        } else if ($diff == "medium") {
+        } else if ($diff == "Medium") {
             $config['question_range'] =  50;
             $config['answer_range'] =  15;
             $config['argument_number'] =  3;
-        } else if ($diff == "hard") {
+        } else if ($diff == "Hard") {
             $config['question_range'] =  500;
             $config['answer_range'] =  20;
             $config['argument_number'] =  4;
@@ -154,8 +154,14 @@ class MathCatController extends Controller
         // here
         $user = session('user');
 
-        $navbar = "with-options";
         $footer = "true";
+        $user = session('user');
+
+        if (session()->get('user')) {
+            $navbar = "logged-in-with-options";
+        } else {
+            $navbar = "without-options";
+        }
         
         // session
         // $user = $this->users->find($id);
