@@ -9,7 +9,7 @@
                 <div class="modal-body">
 
                     {{-- form for the login --}}
-                    <form action="/api/login" method="POST">
+                    <form action="/login" method="POST">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" name="username" id="username">

@@ -38,6 +38,8 @@ Route::get('/history', function () {
 Route::get('/history/{difficulty?}', [MathCatController::class, 'viewHistory']);
 Route::get('/achievement', [MathCatController::class, 'viewAchievement']);
 
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('logout', function () {
     if (session()->has('user')) {
