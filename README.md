@@ -90,7 +90,7 @@ For initial cloning, do the following:
     php artisan db:seed --class=UsersSeeder
     php artisan db:seed --class=ActivitiesSeeder
     php artisan db:seed --class=AchievementsSeeder
-    php artisan db:seed --class=UserAchivementsSeeder
+    php artisan db:seed --class=UserAchievementsSeeder
 
 
 If sail artisan fails, you may need to first run sail up -d once.
