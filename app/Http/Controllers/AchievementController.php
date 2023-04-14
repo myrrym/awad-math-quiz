@@ -7,7 +7,6 @@ use App\Models\Activity;
 use App\Models\Achievement;
 use App\Models\user_achievement;
 
-
 class AchievementController extends Controller
 {
     public function checkExistence($checkType, $id)
@@ -22,6 +21,7 @@ class AchievementController extends Controller
 
         return true;
     }
+
     public function insertRecord($id, $achievement_id)
     {
 
