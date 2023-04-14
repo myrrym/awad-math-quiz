@@ -15,7 +15,6 @@ class ActivityController extends Controller
 
     function getBestActivity($id, $difficulty)
     {
-
         $data = Activity::all()->where('user_id', $id)->where('difficulty', $difficulty);
         $bestScore = $data->max('score');
         $bestActivity = $data->where('score', $bestScore)->first();

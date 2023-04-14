@@ -80,7 +80,7 @@ class MathCatController extends Controller
             $config['question_range'] =  500;
             $config['answer_range'] =  20;
             $config['argument_number'] =  4;
-        } else if ($diff == "whatTheMeow") {
+        } else if ($diff == "What the meow") {
             $config['question_range'] =  1;
             $config['answer_range'] =  3;
             $config['argument_number'] =  10;
