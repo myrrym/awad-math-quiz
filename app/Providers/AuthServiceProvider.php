@@ -2,7 +2,13 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+// attempt 1
+use Illuminate\Support\Facades\Gate;
+// attempt 2
+use App\Policies\LeaderboardPolicy;
+use App\Models\Leaderboard;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -12,8 +18,13 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array<class-string, class-string>
      */
+    // protected $policies = [
+    //     // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+    // ];
+
+    // attempt
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Leaderboard::class => LeaderboardPolicy::class,
     ];
 
     /**
@@ -21,6 +32,13 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // only logged in users can view leaderboard
+        // attempt 1
+        Gate::define('view-leaderboard', function () {
+            return Auth::check();
+        });
+
+        // attempt 2
+        /* Gate::define('view-leaderboard', [LeaderboardPolicy::class, 'view']); */
     }
 }

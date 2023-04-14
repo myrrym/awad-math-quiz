@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Activity;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class MathCatController extends Controller
 {
@@ -190,7 +192,7 @@ class MathCatController extends Controller
     {
         $navbar = "logged-in-with-options";
         
-        if (!(session()->get('user'))) {
+        if (!Auth::check()) {
             return redirect('/');
         }
         $footer = "true";
@@ -203,6 +205,12 @@ class MathCatController extends Controller
 
     public function viewLeaderboard($difficulty)
     {
+        if (! Gate::allows('view-leaderboard')) {
+            return abort(403);
+        }
+ 
+        // Update the post...
+    // 
         $navbar = "with-options";
 
         if (session()->get('user')) {
@@ -233,7 +241,7 @@ class MathCatController extends Controller
     public function viewHistory()
     {
         $navbar = "logged-in-with-options";
-        if (!(session()->get('user'))) {
+        if (!Auth::check()) {
             return redirect('/');
         }
         $footer = "true";
@@ -248,9 +256,9 @@ class MathCatController extends Controller
     public function viewAchievement()
     {
         $navbar = "logged-in-with-options";
-        if (!(session()->get('user'))) {
-           return redirect('/');
-        } 
+        if (!Auth::check()) {
+            return redirect('/');
+        }
         $footer = "true";
 
         return view('achievement', compact(

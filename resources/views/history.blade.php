@@ -1,12 +1,11 @@
 @extends('template')
 
 @section('head')
-    <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
 @endsection
 
 @php
-    $user = session('user');
+    $user = auth()->user();
     $difficulty = $difficulty ?? 'Easy';
     $activities = app('App\Http\Controllers\ActivityController')->getActivities($user['id'], $difficulty);
     $bestActivity = app('App\Http\Controllers\ActivityController')->getBestActivity($user['id'], $difficulty);

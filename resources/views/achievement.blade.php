@@ -1,10 +1,9 @@
 @extends('template')
 
 @section('head')
-    <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
     @php
-        $user = session('user');
+        $user = auth()->user();
         $tengames = app('App\Http\Controllers\AchievementController')->getTenGames($user['id']);
         $twentygames = app('App\Http\Controllers\AchievementController')->getTwentyGames($user['id']);
         $fiftygames = app('App\Http\Controllers\AchievementController')->getFiftyGames($user['id']);

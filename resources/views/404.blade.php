@@ -1,7 +1,6 @@
 @extends('template')
 
 @section('head')
-    <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
 @endsection
 

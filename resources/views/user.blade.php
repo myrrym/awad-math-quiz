@@ -3,9 +3,6 @@
 @section('head')
     <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
     <title>Two Section Page</title>
-    @php
-        $user = session('user');
-    @endphp
 @endsection
 
 @section('content')
@@ -23,13 +20,13 @@
         <div class="middle-section"></div>
         <div class="right-section">
             <div class="main-frame">
-                <div><img class="profile-picture" src="/assets/img/cats/{{$user['picture']}}"></div>
+                <div><img class="profile-picture" src="/assets/img/cats/{{auth()->user()->picture}}"></div>
                 <div class="label">username</div>
-                <div class="result">{{ $user['username'] }}</div>
+                <div class="result">{{auth()->user()->username}}</div>
                 <div class="label">email</div>
-                <div class="result">{{ $user['email'] }}</div>
+                <div class="result">{{auth()->user()->email}}</div>
                 <div class="label">joined since</div>
-                <div class="result">{{ $user['created_at']->format('Y-m-d') }}</div>
+                <div class="result">{{auth()->user()->created_at->format('d.m.Y')}}</div>
 
             </div>
         </div>

@@ -1,21 +1,18 @@
 @extends("template")
 
 @section("head")
-    <!-- This is where your head goes (jk) this is where the stuff you want to put in your head goes -->
-    @php
-        $user = session('user');
-    @endphp
 @endsection
 
 @section("content")
     <div class="homepage" >
         <!-- This is where your content goes -->
         <div class="homeContent">
-        @if(session()->get('user'))
-            <p class="meow-meow"> Meow Meow, {{ $user['username'] }}!</p>   
-        @else
+        @auth
+            <p class="meow-meow"> Meow Meow, {{ auth()->user()->username }}!</p>   
+        @endauth
+        @guest
             <p class="meow-meow"> Meow Meow, stranger! </p>
-        @endif
+        @endguest
             <p class="homeWord"> Test your math skill, <br> Fight for the top!</p>
                 <div class="difficulty">
                     <a class="js-card card-diff easy" data-diff="Easy"><img class="easy-pic" src="/assets/img/easy.png" alt=""><br>EASY</a>

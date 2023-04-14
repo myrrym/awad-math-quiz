@@ -27,7 +27,7 @@ Route::get('/quiz-results', [MathCatController::class, 'viewQuizResults']);
 Route::get('/user', [MathCatController::class, 'viewUser']);
 Route::get('/leaderboard', function () {
     return redirect('/leaderboard/Easy');
-});
+})->middleware('auth:sanctum');
 Route::get('/leaderboard/{difficulty}', [MathCatController::class, 'viewLeaderboard']);
 // Route::get('user/{username}', [UserController::class, 'loadView']);
 Route::get('/privacy', [MathCatController::class, 'viewPrivacy']);
@@ -38,11 +38,7 @@ Route::get('/privacy', [MathCatController::class, 'viewPrivacy']);
 Route::get('/history', [MathCatController::class, 'viewHistory']);
 Route::get('/achievement', [MathCatController::class, 'viewAchievement']);
 
-Route::get('logout', function () {
-    if (session()->has('user')) {
-        session()->pull('user');
-    }
-    return redirect('/home');
-});
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::fallback([MathCatController::class, 'view404']);
+Auth::routes();
