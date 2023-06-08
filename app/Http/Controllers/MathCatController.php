@@ -208,9 +208,7 @@ class MathCatController extends Controller
         if (! Gate::allows('view-leaderboard')) {
             return abort(403);
         }
- 
-        // Update the post...
-    // 
+        
         $navbar = "with-options";
 
         if (session()->get('user')) {
